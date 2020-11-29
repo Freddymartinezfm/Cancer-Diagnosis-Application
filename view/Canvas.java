@@ -3,12 +3,9 @@ package view;
 import java.awt.Dimension;
 
 import java.awt.Color;
-import java.awt.Font;
-
 
 
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class Canvas extends JPanel {
 

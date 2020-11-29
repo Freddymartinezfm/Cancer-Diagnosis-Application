@@ -1,6 +1,7 @@
+package view;
+
 import javax.swing.*;
 
-import view.Panel;
 
 public class Main {
 

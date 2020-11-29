@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.Dimension;
+import java.awt.*;
 
 import java.awt.Color;
 
@@ -11,8 +11,8 @@ public class Canvas extends JPanel {
 
     private Panel panel;
 
-    public Canvas(Panel panel) {
-        this.panel = panel;
+    public Canvas(Panel p) {
+        panel = p;
         setPreferredSize(new Dimension(500, 550));
         setBackground(Color.black);
     }

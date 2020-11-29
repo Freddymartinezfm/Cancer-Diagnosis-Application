@@ -1,4 +1,3 @@
-
 import server_management.ServerStarter;
 import view.GUIStarter;
 

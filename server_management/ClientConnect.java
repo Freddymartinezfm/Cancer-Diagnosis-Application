@@ -27,7 +27,7 @@ public class ClientConnect implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Ran in clientConnect.java");
+		System.out.println("Code to diagnose patient is called here.");
 	}
 	
 }

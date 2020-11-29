@@ -1,21 +1,13 @@
-import javax.swing.*;
 
-import view.Panel;
+import server_management.ServerStarter;
+import view.GUIStarter;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        JFrame window = new JFrame();
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setLocation(400, 100);
-        window.setTitle("Group 5 Breast Cancer Diagnosis Application");
-
-        var panel  = new Panel(window);
-        panel.init();
-
-        window.pack();
-        window.setVisible(true);
+        new GUIStarter();
+        new ServerStarter();
 
     }
 

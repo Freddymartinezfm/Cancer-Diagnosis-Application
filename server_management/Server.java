@@ -6,9 +6,13 @@ import java.net.Socket;
 
 public class Server {
 
-	private int port = 1001;
+	private int port = 0;
 	private ServerSocket server = null;
 	private Socket client = null;
+
+	public Server(int port) {
+		this.port = port;
+	}
 
 	public void start() {
 		initializeServer();
@@ -36,7 +40,7 @@ public class Server {
 				System.err.println(e);
 				System.exit(1);
 			}
-
+			// Thread t allows for this server to be multi-threaded
 			Thread t = new Thread(new ClientConnect(client));
 			t.start();
 		}
@@ -47,7 +51,7 @@ public class Server {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Server().start();
+		new Server(1001).start();
 	}
 	
 }

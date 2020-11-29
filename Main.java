@@ -1,8 +1,7 @@
-package view;
-
 import javax.swing.*;
+import java.awt.*;
 
-
+import view.Panel;
 public class Main {
 
     public static void main(String[] args) {

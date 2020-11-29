@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 
 public class LoggingManager {
 	private String logger_level;
-	private static final org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getLogger(LoggingManager.class);
+	private static final Logger logger = LogManager.getLogger(LoggingManager.class);
 
 	public static void main(String[] args) {
 		logger.trace("log info");

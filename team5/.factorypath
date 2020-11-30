@@ -1,0 +1,6 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-core/2.12.1/log4j-core-2.12.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/scala-tools/testing/specs_2.10/1.6.9/specs_2.10-1.6.9.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/scala-lang/scala-library/2.10.0/scala-library-2.10.0.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

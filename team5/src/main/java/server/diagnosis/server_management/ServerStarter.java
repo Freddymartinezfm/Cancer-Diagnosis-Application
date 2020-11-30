@@ -8,7 +8,7 @@ public class ServerStarter {
 
 		
 		for(int i = 0; i < ports.length; i++) {
-			new Server(ports[i]).start();
+			// new Server(ports[i]).start();
 		}
 		
 

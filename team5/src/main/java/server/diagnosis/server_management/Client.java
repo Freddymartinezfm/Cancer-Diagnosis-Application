@@ -10,10 +10,13 @@ import java.util.Scanner;
 
 import org.w3c.dom.Document;
 
+//import org.jdom2.Document;
+
+
 public class Client {
 
-	private int port = 0;
-	private String host = "localhost";
+	private static int port = 1001;
+	private static String host = "localhost";
 
 	private BufferedReader stdIn;
 	private ObjectInputStream reader;
@@ -21,10 +24,6 @@ public class Client {
 	private Document usersLoginRequestXML;
 	
 	private Socket server = null;
-
-	public Client(int port) {
-		this.port = port;
-	}
 
 	public void run() throws IOException {
 		initializeClient();
@@ -63,7 +62,7 @@ public class Client {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Client(1001).run();
+		new Client().run();
 	}
 	
 }

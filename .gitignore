@@ -33,3 +33,7 @@ out/
 *.ipr
 *.iws
 .vscode/settings.json
+<<<<<<< HEAD
+=======
+team5/.project
+>>>>>>> mavenfix

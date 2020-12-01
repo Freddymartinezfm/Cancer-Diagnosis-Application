@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -38,6 +37,18 @@ public class Panel  {
     private JButton loadButton = new JButton("Load");
     private JButton clearButton = new JButton("Clear");
     private JButton loginButton = new JButton("Login"); //dummy button for prototype
+
+    JTextField patientIDText = new JTextField();
+    JTextField clumpText = new JTextField();
+    JTextField cellText = new JTextField();
+    JTextField cellText2 = new JTextField();
+    JTextField adText = new JTextField();
+    JTextField singText = new JTextField();
+    JTextField bareText = new JTextField();
+    JTextField blandText = new JTextField();
+    JTextField normText = new JTextField();
+    JTextField mitText = new JTextField();
+    JTextField classText = new JTextField();
 
     private Canvas canvas;
     private JTextArea stuff;
@@ -82,131 +93,108 @@ public class Panel  {
 
         // variables
         JLabel IDName = new JLabel("ID Number: ");
-        JTextField patientID = new JTextField();
-        patientID.setBackground(Color.white);
-        patientID.setBorder(new LineBorder(Color.darkGray, 1));
+        patientIDText.setBackground(Color.white);
+        patientIDText.setBorder(new LineBorder(Color.darkGray, 1));
         IDName.setPreferredSize(new Dimension(100, 20));
-        patientID.setPreferredSize(new Dimension(100, 20));
+        patientIDText.setPreferredSize(new Dimension(100, 20));
         westPanel.add(IDName);
-        westPanel.add(patientID);
-        patientID.setEditable(true);
+        westPanel.add(patientIDText);
+        patientIDText.setEditable(true);
 
         JLabel clumpLabel = new JLabel("Clump Thickness: ");
-        JTextField clump = new JTextField();
         clumpLabel.setPreferredSize(new Dimension(100, 20));
         westPanel.add(clumpLabel);
-        clump.setPreferredSize(new Dimension(100, 20));
-        clump.setHorizontalAlignment(JTextField.TRAILING);        
-        clump.setBackground(Color.white);
-        clump.setBorder(new LineBorder(Color.darkGray, 1));
-        westPanel.add(clump);
-        clump.setEditable(true);
+        clumpText.setPreferredSize(new Dimension(100, 20));
+        clumpText.setBackground(Color.white);
+        clumpText.setBorder(new LineBorder(Color.darkGray, 1));
+        westPanel.add(clumpText);
+        clumpText.setEditable(true);
 
         JLabel cellSize = new JLabel("Cell Size: ");
-        JTextField cellbox = new JTextField();
-        cellbox.setBackground(Color.white);
-        cellbox.setBorder(new LineBorder(Color.darkGray, 1));
-        cellbox.setPreferredSize(new Dimension(100, 20));
+        cellText.setBackground(Color.white);
+        cellText.setBorder(new LineBorder(Color.darkGray, 1));
+        cellText.setPreferredSize(new Dimension(100, 20));
         cellSize.setPreferredSize(new Dimension(100, 20));
         westPanel.add(cellSize);
-        westPanel.add(cellbox);
-        cellbox.setEditable(true);
+        westPanel.add(cellText);
+        cellText.setEditable(true);
 
         JLabel cellShape = new JLabel("Cell Shape: ");
-        JTextField cellbox2 = new JTextField();
-        cellbox2.setBackground(Color.white);
-        cellbox2.setBorder(new LineBorder(Color.darkGray, 1));
-        cellbox2.setPreferredSize(new Dimension(100, 20));
+        cellText2.setBackground(Color.white);
+        cellText2.setBorder(new LineBorder(Color.darkGray, 1));
+        cellText2.setPreferredSize(new Dimension(100, 20));
         cellShape.setPreferredSize(new Dimension(100, 20));
         westPanel.add(cellShape);
-        westPanel.add(cellbox2);
-        cellbox2.setEditable(true);
+        westPanel.add(cellText2);
+        cellText2.setEditable(true);
 
         JLabel ad = new JLabel("Adhesion: ");
-        JTextField adbox = new JTextField();
-        adbox.setBackground(Color.white);
-        adbox.setBorder(new LineBorder(Color.darkGray, 1));
-        adbox.setPreferredSize(new Dimension(100, 20));
+        adText.setBackground(Color.white);
+        adText.setBorder(new LineBorder(Color.darkGray, 1));
+        adText.setPreferredSize(new Dimension(100, 20));
         ad.setPreferredSize(new Dimension(100, 20));
         westPanel.add(ad);
-        westPanel.add(adbox);
-        adbox.setEditable(true);
+        westPanel.add(adText);
+        adText.setEditable(true);
 
         JLabel singleCellSize = new JLabel("Single Cell Size: ");
-        JTextField singbox = new JTextField();
         singleCellSize.setPreferredSize(new Dimension(100, 20));
-        singbox.setPreferredSize(new Dimension(100, 20));
-        singbox.setBackground(Color.white);
-        singbox.setBorder(new LineBorder(Color.darkGray, 1));
+        singText.setPreferredSize(new Dimension(100, 20));
+        singText.setBackground(Color.white);
+        singText.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(singleCellSize);
-        westPanel.add(singbox);
-        singbox.setEditable(true);
+        westPanel.add(singText);
+        singText.setEditable(true);
 
         JLabel bareNuclei = new JLabel("Bare Nuclei: ");
-        JTextField barebox = new JTextField();
         bareNuclei.setPreferredSize(new Dimension(100, 20));
-        barebox.setPreferredSize(new Dimension(100, 20));
-        barebox.setBackground(Color.white);
-        barebox.setBorder(new LineBorder(Color.darkGray, 1));
+        bareText.setPreferredSize(new Dimension(100, 20));
+        bareText.setBackground(Color.white);
+        bareText.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(bareNuclei);
-        westPanel.add(barebox);
-        barebox.setEditable(true);
+        westPanel.add(bareText);
+        bareText.setEditable(true);
 
         JLabel blandChromatin = new JLabel("Bland Chromatin: ");
-        JTextField blandbox = new JTextField();
         blandChromatin.setPreferredSize(new Dimension(100, 20));
-        blandbox.setPreferredSize(new Dimension(100, 20));
-        blandbox.setBackground(Color.white);
-        blandbox.setBorder(new LineBorder(Color.darkGray, 1));
+        blandText.setPreferredSize(new Dimension(100, 20));
+        blandText.setBackground(Color.white);
+        blandText.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(blandChromatin);
-        westPanel.add(blandbox);
-        barebox.setEditable(true);
+        westPanel.add(blandText);
+        bareText.setEditable(true);
 
         JLabel normalNucleoli = new JLabel("Normal Nucleoi: ");
-        JTextField normbox = new JTextField();
         normalNucleoli.setPreferredSize(new Dimension(100, 20));
-        normbox.setPreferredSize(new Dimension(100, 20));
-        normbox.setBackground(Color.white);
-        normbox.setBorder(new LineBorder(Color.darkGray, 1));
+        normText.setPreferredSize(new Dimension(100, 20));
+        normText.setBackground(Color.white);
+        normText.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(normalNucleoli);
-        westPanel.add(normbox);
-        normbox.setEditable(true);
+        westPanel.add(normText);
+        normText.setEditable(true);
 
         JLabel mitosis = new JLabel("Mitosis: ");
-        JTextField mitbox = new JTextField();
         mitosis.setPreferredSize(new Dimension(100, 20));
-        mitbox.setPreferredSize(new Dimension(100, 20));
-        mitbox.setBackground(Color.white);
-        mitbox.setBorder(new LineBorder(Color.darkGray, 1));
+        mitText.setPreferredSize(new Dimension(100, 20));
+        mitText.setBackground(Color.white);
+        mitText.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(mitosis);
-        westPanel.add(mitbox);
-        barebox.setEditable(true);
+        westPanel.add(mitText);
+        bareText.setEditable(true);
 
         JLabel class1 = new JLabel("Class: ");
-        JTextField classbox = new JTextField();
         class1.setPreferredSize(new Dimension(100, 20));
-        classbox.setPreferredSize(new Dimension(100, 20));
-        classbox.setBackground(Color.white);
-        classbox.setBorder(new LineBorder(Color.darkGray, 1));
+        classText.setPreferredSize(new Dimension(100, 20));
+        classText.setBackground(Color.white);
+        classText.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(class1);
-        westPanel.add(BorderLayout.EAST, classbox);
-        barebox.setEditable(true);
+        westPanel.add(BorderLayout.EAST, classText);
+        bareText.setEditable(true);
 
         // validButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         westPanel.add(BorderLayout.CENTER, validButton);
         westPanel.add(BorderLayout.CENTER, loadButton);
         westPanel.add(BorderLayout.CENTER, clearButton);
-
-        // JTextField clump = new JTextField();
-        // JTextField cellSize = new JTextField();
-        // JTextField cellShape = new JTextField();
-        // JTextField adhesion = new JTextField();
-        // JTextField singleCellSize = new JTextField();
-        // JTextField bareNuclei = new JTextField();
-        // JTextField blandChromatin = new JTextField();
-        // JTextField normalNucleoli = new JTextField();
-        // JTextField mitosis = new JTextField();
-        // JTextField class1 = new JTextField();
 
         // panel for connecting
         JPanel southPanel = new JPanel();
@@ -224,7 +212,7 @@ public class Panel  {
 
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
-        // login box and border
+        // login Text and border
         JTextField login = new JTextField();
         login.setEditable(true);
         login.setBackground(Color.lightGray);
@@ -238,7 +226,7 @@ public class Panel  {
         login.setBorder(loginBorder);
         northPanel.add(BorderLayout.WEST, login);
 
-        // password box
+        // password Text
         JPasswordField password = new JPasswordField();
         password.setEditable(true);
         password.setBackground(Color.lightGray);
@@ -309,4 +297,49 @@ public class Panel  {
     public Canvas getCanvas() {
         return canvas;
     }
+
+    public JTextField getPatientIDText() {
+        return patientIDText;
+    }
+
+    public JTextField getClumpText() {
+        return clumpText;
+    }
+
+    public JTextField getCellText() {
+        return cellText;
+    }
+
+    public JTextField getCellText2() {
+        return cellText2;
+    }
+
+    public JTextField getAdText() {
+        return adText;
+    }
+
+    public JTextField getSingText() {
+        return singText;
+    }
+
+    public JTextField getBareText() {
+        return bareText;
+    }
+
+    public JTextField getBlandText() {
+        return blandText;
+    }
+
+    public JTextField getNormText() {
+        return normText;
+    }
+
+    public JTextField getMitText() {
+        return mitText;
+    }
+
+    public JTextField getClassText() {
+        return classText;
+    }
+    
 }

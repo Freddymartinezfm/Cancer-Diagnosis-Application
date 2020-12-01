@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import server.diagnosis.view.GUIStarter;
 
 public class Main {
-    // private static final Logger logger = LogManager(Main.class); here here here
+    // private static final Logger logger = LogManager(Main.class);
     public static void main(String[] args) {
          GUIStarter guiStarter = new GUIStarter();
     }

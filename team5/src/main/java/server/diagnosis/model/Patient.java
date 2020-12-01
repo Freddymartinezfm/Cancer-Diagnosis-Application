@@ -1,22 +1,25 @@
 package server.diagnosis.model;
 
+import server.diagnosis.controller.GUIActionListener;
+
 public class Patient {
 
-    private int id;
-    private int thickness;
-    private int uniformity_size;
-    private int uniformity_shape;
-    private int adhesion;
-    private int epithelial_size;
-    private int bare_nuclei;
-    private int chromatin;
-    private int mitosis;
-    private int diagnosis_class;
+    GUIActionListener l;
+    String[] patientObjectInfo = l.getPatientInfo();
 
-    public Patient() {
-        
+    // private String id;
+    // private String thickness;
+    // private String uniformity_size;
+    // private String uniformity_shape;
+    // private String adhesion;
+    // private String epithelial_size;
+    // private String bare_nuclei;
+    // private String chromatin;
+    // private String mitosis;
+    // private String diagnosisClass;
+
+    public Patient(String[] patientObjectInfo) {
+        this.patientObjectInfo = patientObjectInfo;
     }
-
-
     
 }

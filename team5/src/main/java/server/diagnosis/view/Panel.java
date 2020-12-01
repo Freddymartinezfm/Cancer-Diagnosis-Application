@@ -37,6 +37,7 @@ public class Panel  {
     private JButton validButton = new JButton("Validate");
     private JButton loadButton = new JButton("Load");
     private JButton clearButton = new JButton("Clear");
+    private JButton loginButton = new JButton("Login"); //dummy button for prototype
 
     private Canvas canvas;
     private JTextArea stuff;
@@ -57,50 +58,49 @@ public class Panel  {
         westPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
 
         // consider turning these into formatted text fields
-        JTextField firstName = new JTextField();
-        JTextField lastName = new JTextField();
-        // JTextField middle = new JTextField();
-         JTextField patientID = new JTextField();
+        //JTextField firstName = new JTextField();
+        //JTextField lastName = new JTextField();
 
-        firstName.setBackground(Color.white);
-        firstName.setBorder(new LineBorder(Color.darkGray, 1));
-        JLabel firstName1 = new JLabel("First Name: ");
-        westPanel.add(firstName1);
-        westPanel.add(firstName);
-        firstName.setPreferredSize(new Dimension(100, 20));
-        firstName1.setPreferredSize(new Dimension(100, 20));
+        // firstName.setBackground(Color.white);
+        // firstName.setBorder(new LineBorder(Color.darkGray, 1));
+        // JLabel firstName1 = new JLabel("First Name: ");
+        // westPanel.add(firstName1);
+        // westPanel.add(firstName);
+        // firstName.setPreferredSize(new Dimension(100, 20));
+        // firstName1.setPreferredSize(new Dimension(100, 20));
 
-        lastName.setBackground(Color.white);
-        lastName.setBorder(new LineBorder(Color.darkGray, 1));
-        JLabel lastName1 = new JLabel("Last Name: ");
-        westPanel.add(lastName1);
-        westPanel.add(lastName);
-        lastName.setPreferredSize(new Dimension(100, 20));
-        lastName1.setPreferredSize(new Dimension(100, 20));
+        // lastName.setBackground(Color.white);
+        // lastName.setBorder(new LineBorder(Color.darkGray, 1));
+        // JLabel lastName1 = new JLabel("Last Name: ");
+        // westPanel.add(lastName1);
+        // westPanel.add(lastName);
+        // lastName.setPreferredSize(new Dimension(100, 20));
+        // lastName1.setPreferredSize(new Dimension(100, 20));
 
         // JSeparator s = new JSeparator(SwingConstants.HORIZONTAL);
         // westPanel.add(s);
 
         // variables
         JLabel IDName = new JLabel("ID Number: ");
-        JTextField IDNum = new JTextField();
-        IDNum.setBackground(Color.white);
-        IDNum.setBorder(new LineBorder(Color.darkGray, 1));
+        JTextField patientID = new JTextField();
+        patientID.setBackground(Color.white);
+        patientID.setBorder(new LineBorder(Color.darkGray, 1));
         IDName.setPreferredSize(new Dimension(100, 20));
-        IDNum.setPreferredSize(new Dimension(100, 20));
+        patientID.setPreferredSize(new Dimension(100, 20));
         westPanel.add(IDName);
-        westPanel.add(IDNum);
-        IDNum.setEditable(true);
+        westPanel.add(patientID);
+        patientID.setEditable(true);
 
-        JLabel clump = new JLabel("Clump Thickness: ");
-        JTextField clumpbox = new JTextField();
-        clumpbox.setBackground(Color.white);
-        clumpbox.setBorder(new LineBorder(Color.darkGray, 1));
+        JLabel clumpLabel = new JLabel("Clump Thickness: ");
+        JTextField clump = new JTextField();
+        clumpLabel.setPreferredSize(new Dimension(100, 20));
+        westPanel.add(clumpLabel);
         clump.setPreferredSize(new Dimension(100, 20));
-        clumpbox.setPreferredSize(new Dimension(90, 20));
+        clump.setHorizontalAlignment(JTextField.TRAILING);        
+        clump.setBackground(Color.white);
+        clump.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(clump);
-        westPanel.add(BorderLayout.EAST, clumpbox);
-        clumpbox.setEditable(true);
+        clump.setEditable(true);
 
         JLabel cellSize = new JLabel("Cell Size: ");
         JTextField cellbox = new JTextField();
@@ -185,7 +185,7 @@ public class Panel  {
         JLabel class1 = new JLabel("Class: ");
         JTextField classbox = new JTextField();
         class1.setPreferredSize(new Dimension(100, 20));
-        classbox.setPreferredSize(new Dimension(90, 20));
+        classbox.setPreferredSize(new Dimension(100, 20));
         classbox.setBackground(Color.white);
         classbox.setBorder(new LineBorder(Color.darkGray, 1));
         westPanel.add(class1);
@@ -217,10 +217,10 @@ public class Panel  {
 
         // panel for doctor's info and login
         JPanel northPanel = new JPanel();
-        northPanel.setLayout(new GridLayout(1, 2));
+        northPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         cp.add(BorderLayout.NORTH, northPanel);
-        northPanel.setPreferredSize(new Dimension(400, 40));
-        northPanel.setBackground(Color.darkGray);
+        northPanel.setPreferredSize(new Dimension(400, 44));
+        northPanel.setBackground(Color.lightGray);
 
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
@@ -230,12 +230,13 @@ public class Panel  {
         login.setBackground(Color.lightGray);
         login.setForeground(Color.black);
         login.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        login.setPreferredSize(new Dimension(320, 38));
 
         TitledBorder loginBorder;
         loginBorder = BorderFactory.createTitledBorder(loweredbeveled, "Username/Email");
         loginBorder.setTitleJustification(TitledBorder.LEFT);
         login.setBorder(loginBorder);
-        northPanel.add(login);
+        northPanel.add(BorderLayout.WEST, login);
 
         // password box
         JPasswordField password = new JPasswordField();
@@ -243,13 +244,18 @@ public class Panel  {
         password.setBackground(Color.lightGray);
         password.setForeground(Color.black);
         password.setFont(new Font("Courier New", Font.BOLD, 15));
+        password.setPreferredSize(new Dimension(320, 38));
 
         TitledBorder passBorder;
         passBorder = BorderFactory.createTitledBorder(loweredbeveled, "Password");
         passBorder.setTitleJustification(TitledBorder.LEFT);
         password.setBorder(passBorder);
-        northPanel.add(password);
+        northPanel.add(BorderLayout.WEST, password);
 
+        //login button
+        northPanel.add(BorderLayout.EAST, loginButton);
+
+        //text area
         canvas = new Canvas(this);
         cp.add(BorderLayout.CENTER, canvas);
         stuff = new JTextArea("Ready for session");
@@ -269,10 +275,15 @@ public class Panel  {
         disconnectButton.addActionListener(listener);
         loadButton.addActionListener(listener);
         clearButton.addActionListener(listener);
+        loginButton.addActionListener(listener);
     }
 
     public JTextArea getStuff(){
         return stuff;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
     }
 
     public JButton getValidButton() {

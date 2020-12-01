@@ -13,8 +13,8 @@ public class GUIActionListener implements ActionListener {
 
     private Panel panel;
     private JTextArea output;
-    private String[] patientInfo = new String[12]; // this is the array to be used for the XML
-    private String[] patientInfoPrint = new String[12]; // this is the array to be used for the textArea output
+    private String[] patientInfo = new String[11]; // this is the array to be used for the XML
+    private String[] patientInfoPrint = new String[11]; // this is the array to be used for the textArea output
 
     public GUIActionListener(Panel panel) {
         this.panel = panel;
@@ -62,12 +62,17 @@ public class GUIActionListener implements ActionListener {
     private boolean validate() {
         int count = 0;
         //add: code for the id range values
-        for (int i = 0; i < patientInfo.length; i++) {
-            String tempString = patientInfo[i].trim();
-            int temp = Integer.parseInt(tempString);
-            if (temp >= 0 && temp < 11) {
-                count ++;
-            }
+        for (int i = 0; i < patientInfo.length; i++) {            
+            if(patientInfo[i] == null || patientInfo[i].equals("")) {
+                System.out.println("Empty input");
+                break;
+            } else {
+                String tempString = patientInfo[i].trim();
+                int temp = Integer.parseInt(tempString);
+                if (temp >= 0 && temp < 11 ) { 
+                 count ++;
+                }
+            }            
         }
         if (count == 11) {
             //add: code to enable the Diagnose button
@@ -80,29 +85,29 @@ public class GUIActionListener implements ActionListener {
     }
 
     private void saveForm() {
-        patientInfo[1] = panel.getPatientIDText().getText();
-        patientInfo[2] = panel.getClumpText().getText();
-        patientInfo[3] = panel.getCellText().getText();
-        patientInfo[4] = panel.getCellText2().getText();
-        patientInfo[5] = panel.getAdText().getText();
-        patientInfo[6] = panel.getSingText().getText();
-        patientInfo[7] = panel.getBareText().getText();
-        patientInfo[8] = panel.getBlandText().getText();
-        patientInfo[9] = panel.getNormText().getText();
-        patientInfo[10] = panel.getMitText().getText();
-        patientInfo[11] = panel.getClassText().getText();
+        patientInfo[0] = panel.getPatientIDText().getText();
+        patientInfo[1] = panel.getClumpText().getText();
+        patientInfo[2] = panel.getCellText().getText();
+        patientInfo[3] = panel.getCellText2().getText();
+        patientInfo[4] = panel.getAdText().getText();
+        patientInfo[5] = panel.getSingText().getText();
+        patientInfo[6] = panel.getBareText().getText();
+        patientInfo[7] = panel.getBlandText().getText();
+        patientInfo[8] = panel.getNormText().getText();
+        patientInfo[9] = panel.getMitText().getText();
+        patientInfo[10] = panel.getClassText().getText();
 
-        patientInfoPrint[1] = "Patient ID: " + panel.getPatientIDText().getText();
-        patientInfoPrint[2] = "Clump Thickness: " + panel.getClumpText().getText();
-        patientInfoPrint[3] = "Uniformity Cell Size: " + panel.getCellText().getText();
-        patientInfoPrint[4] = "Uniformity Cell Shape: " + panel.getCellText2().getText();
-        patientInfoPrint[5] = "Marginal Adhesion: " + panel.getAdText().getText();
-        patientInfoPrint[6] = "Single Epithelial Cell Size: " + panel.getSingText().getText();
-        patientInfoPrint[7] = "Bare Nuclei: " + panel.getBareText().getText();
-        patientInfoPrint[8] = "Bland Chromatin: " + panel.getBlandText().getText();
-        patientInfoPrint[9] = "Normal Nucleoli: " + panel.getNormText().getText();
-        patientInfoPrint[10] = "Mitoses: " + panel.getMitText().getText();
-        patientInfoPrint[11] = "Class: " + panel.getClassText().getText();
+        patientInfoPrint[0] = "Patient ID: " + panel.getPatientIDText().getText();
+        patientInfoPrint[1] = "Clump Thickness: " + panel.getClumpText().getText();
+        patientInfoPrint[2] = "Uniformity Cell Size: " + panel.getCellText().getText();
+        patientInfoPrint[3] = "Uniformity Cell Shape: " + panel.getCellText2().getText();
+        patientInfoPrint[4] = "Marginal Adhesion: " + panel.getAdText().getText();
+        patientInfoPrint[5] = "Single Epithelial Cell Size: " + panel.getSingText().getText();
+        patientInfoPrint[6] = "Bare Nuclei: " + panel.getBareText().getText();
+        patientInfoPrint[7] = "Bland Chromatin: " + panel.getBlandText().getText();
+        patientInfoPrint[8] = "Normal Nucleoli: " + panel.getNormText().getText();
+        patientInfoPrint[9] = "Mitoses: " + panel.getMitText().getText();
+        patientInfoPrint[10] = "Class: " + panel.getClassText().getText();
 
     }
 

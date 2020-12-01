@@ -4,8 +4,8 @@ import server.diagnosis.controller.GUIActionListener;
 
 public class Patient {
 
-    GUIActionListener l;
-    String[] patientObjectInfo = l.getPatientInfo();
+    GUIActionListener listener;
+    String[] patientObjectInfo = listener.getPatientInfo();
 
     // private String id;
     // private String thickness;

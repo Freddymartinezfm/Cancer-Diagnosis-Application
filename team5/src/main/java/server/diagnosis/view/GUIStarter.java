@@ -2,9 +2,12 @@ package server.diagnosis.view;
 
 import javax.swing.JFrame;
 
+import server.diagnosis.component.LoggingManager;
+
 public class GUIStarter {
 	
 	public GUIStarter() {
+        LoggingManager.logger.info("info");
 		start();
 	}
 

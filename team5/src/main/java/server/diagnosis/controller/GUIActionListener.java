@@ -3,27 +3,40 @@ package server.diagnosis.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Integer;
-
+import javax.sound.sampled.SourceDataLine;
 import javax.swing.*;
 
+import server.diagnosis.component.UserTextAreaAppender;
 import server.diagnosis.view.Panel;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.OutputStreamAppender;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.message.Message;
+
 
 
 public class GUIActionListener implements ActionListener {
-
+    private static final Logger logger = LogManager.getLogger(GUIActionListener.class);
+    
     private Panel panel;
     private JTextArea output;
     private String[] patientInfo = new String[11]; // this is the array to be used for the XML
     private String[] patientInfoPrint = new String[11]; // this is the array to be used for the textArea output
 
     public GUIActionListener(Panel panel) {
+        logger.info("stub log");
         this.panel = panel;
         output = panel.getStuff();
+        UserTextAreaAppender appender = new UserTextAreaAppender(this.output);
+        org.apache.log4j.LogManager.getRootLogger().addAppender(appender);
     }
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         
         JButton button = (JButton) e.getSource();
         if (button == panel.getValidButton()) {

@@ -1,9 +1,9 @@
 package server.diagnosis.model;
 
+
 import server.diagnosis.controller.GUIActionListener;
 
 public class Patient {
-
     GUIActionListener listener;
     String[] patientObjectInfo = listener.getPatientInfo();
 

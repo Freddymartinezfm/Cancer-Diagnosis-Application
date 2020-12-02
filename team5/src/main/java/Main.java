@@ -1,18 +1,14 @@
-// import org.apache.logging.log4j;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-// import server.diagnosis.server_management.ServerStarter;
+import server.diagnosis.component.LoggingManager;
+import server.diagnosis.server_management.ServerStarter;
 import server.diagnosis.view.GUIStarter;
 
 public class Main {
-    // private static final Logger logger = LogManager(Main.class);
     public static void main(String[] args) {
-         GUIStarter guiStarter = new GUIStarter();
+        LoggingManager.logger.info("info");
+         new GUIStarter();
+         new ServerStarter();
     }
-
-    
-       
-        // ServerStarter serverStarter = new ServerStarter();
-        // System.out.println("TEst");
 }

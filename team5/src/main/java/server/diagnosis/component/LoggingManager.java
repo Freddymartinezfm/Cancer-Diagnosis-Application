@@ -1,22 +1,25 @@
 package server.diagnosis.component;
 
+import org.apache.log4j.WriterAppender;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class LoggingManager {
-	private String logger_level;
-	private static final Logger logger = LogManager.getLogger(LoggingManager.class);
 
-	public static void main(String[] args) {
+public class LoggingManager extends WriterAppender {
+	public static final Logger logger = LogManager.getLogger();
+	
+	
+
+	public static void displayLogLevels(){
+		logger.info("info");
 		logger.trace("log info");
-		logger.debug("log info");
+		logger.debug("log debug");
 		logger.info("log info");
-		logger.warn("log info");
-		logger.error("log info");
-		logger.fatal("log debug");
+		logger.warn("log warn");
+		logger.error("log error");
+		logger.fatal("log fatal");
+
 	}
 
-	// public void setLoggerLevel(String lvl){
-	// 	this.logger_level = lvl;
-	// }
 }
+

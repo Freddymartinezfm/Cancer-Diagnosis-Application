@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration >
+    <!-- Logging Properties -->
+    <Properties>
+        <Property name="LOG_PATTERN">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</Property>
+    </Properties>
+
+    <!-- Logging Appenders -->
+    <Appenders>
+        <Console name="console-appender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <RollingFile name="rolling-log-file-appender"
+                     fileName="${APP_LOG_ROOT}/rolling-log-file-appender.log"
+                     filePattern="${APP_LOG_ROOT}/log-file.log.%d{yyyy-MM-dd-hh-mm}">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="19500KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <appender name="textAreaAppender" class="server.diagnosis.component.UserTextAreaAppender">
+            <param name="Threshold" value = "INFO"/>
+            <layout class="PatternLayout">
+                <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1}"/>
+            </layout>
+        </appender>
+
+    </Appenders>
+    <!-- Logging Loggers -->
+    <Loggers>
+
+        <Logger name ="file-appender">
+            <AppenderRef ref="rolling-log-file-appender"/>
+        </Logger>
+        
+        <Logger name ="textAreaAppender">
+            <AppenderRef ref="textAreaAppender"/>
+        </Logger>
+
+        
+
+        <Root level = "TRACE">
+            <AppenderRef ref="console-appender"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>

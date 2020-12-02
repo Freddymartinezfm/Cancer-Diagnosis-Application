@@ -30,8 +30,9 @@ public class GUIActionListener implements ActionListener {
         logger.info("stub log");
         this.panel = panel;
         output = panel.getStuff();
-        UserTextAreaAppender appender = new UserTextAreaAppender(this.output);
-        org.apache.log4j.LogManager.getRootLogger().addAppender(appender);
+        // info should be validated here, or in the xml code.
+        // UserTextAreaAppender appender = new UserTextAreaAppender(this.output);
+        // org.apache.log4j.LogManager.getRootLogger().addAppender(appender);
     }
 
 
@@ -49,11 +50,14 @@ public class GUIActionListener implements ActionListener {
         } else if (button == panel.getDiagnoseButton()) {
             //connecting code to be added for the server
             output.setText("Connecting for diagnosis");
+            // info should be verified
+
             panel.getCanvas().repaint();
             
         } else if (button == panel.getLoginButton()) {
             //dummy prototype for logging in
             output.setText("Logging in...");
+
             panel.getCanvas().repaint();
 
         } else if (button == panel.getDisconnectButton()) {

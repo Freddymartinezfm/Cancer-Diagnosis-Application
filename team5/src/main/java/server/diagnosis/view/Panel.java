@@ -276,6 +276,7 @@ public class Panel  {
         loadButton.addActionListener(listener);
         clearButton.addActionListener(listener);
         loginButton.addActionListener(listener);
+
     }
 
     public JTextArea getStuff(){

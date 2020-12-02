@@ -8,13 +8,17 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import org.w3c.dom.Document;
 
 //import org.jdom2.Document;
 
 
 public class Client {
-
+    private static final Logger logger = LogManager.getLogger();
 	private static int port = 1001;
 	private static String host = "localhost";
 
@@ -24,6 +28,10 @@ public class Client {
 	private Document usersLoginRequestXML;
 	
 	private Socket server = null;
+
+	public Client(){
+		logger.info("stub log");
+	}
 
 	public void run() throws IOException {
 		initializeClient();

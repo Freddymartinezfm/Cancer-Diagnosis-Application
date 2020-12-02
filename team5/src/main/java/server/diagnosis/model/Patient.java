@@ -1,6 +1,12 @@
 package server.diagnosis.model;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class Patient {
+    private static final Logger logger = LogManager.getLogger();
+
 
     private int id;
     private int thickness;
@@ -14,6 +20,7 @@ public class Patient {
     private int diagnosis_class;
 
     public Patient() {
+        logger.info("stub log");
         
     }
 

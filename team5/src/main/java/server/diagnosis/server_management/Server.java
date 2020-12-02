@@ -4,18 +4,23 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class Server {
+    private static final Logger logger = LogManager.getLogger();
 	private int port = 1001;
 	private ServerSocket server = null;
 	private Socket client = null;
 
 	public void start() {
+
 		initializeServer();
 		startListening();
 	}
 
 	private void initializeServer() {
+		logger.info("initializeServer");
 		try {
 			server = new ServerSocket(port);
 			log("Server initialized on port: " + Integer.toString(port));

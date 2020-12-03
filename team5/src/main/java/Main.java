@@ -1,3 +1,9 @@
+/* Main.java
+version 1.0.1
+11/29/2020
+Copywrite UCO Software Engineering I Group 5
+ */
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,3 +1,8 @@
+/* Panel.java
+version 1.0.3
+11/29/2020
+Copywrite UCO Software Engineering I Group 5
+ */
 package server.diagnosis.view;
 
 import java.awt.Container;

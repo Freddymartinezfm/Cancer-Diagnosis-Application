@@ -3,8 +3,8 @@ import java.io.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
-public class xmlStarter {
-    public xmlStarter(){
+public class xmlManager {
+    public xmlManager(){
         start();
     }
 

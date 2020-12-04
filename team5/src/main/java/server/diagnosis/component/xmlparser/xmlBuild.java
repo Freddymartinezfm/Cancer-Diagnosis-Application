@@ -33,11 +33,11 @@ public class xmlBuild {
             //practice setting patient id
             //id will come from patient model
             Attr id = doc.createAttribute("id");
-            id.setValue("1");   //temp test right now
+            id.setValue("1234");   //temp test right now
             patient.setAttributeNode(id);
 
             //start creating subelements
-            Element clump_thickness = doc.createElement("clump_thickness");
+            Element clump_thickness = doc.createElement("clump_thickness\n");
             clump_thickness.appendChild(doc.createTextNode("1"));
             patient.appendChild(clump_thickness);
 

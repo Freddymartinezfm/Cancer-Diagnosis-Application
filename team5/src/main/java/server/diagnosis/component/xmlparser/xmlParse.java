@@ -22,6 +22,8 @@ public class xmlParse{
             Element root = doc.getDocumentElement();
 
             //to confirm root name, can remove later
+            System.out.println("Testing xmlParse");
+            System.out.println("Expecting root to be Dataset");
             System.out.println("Root :" + root.getNodeName());
 
             NodeList list = doc.getElementsByTagName("Patient");

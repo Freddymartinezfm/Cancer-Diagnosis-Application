@@ -1,8 +1,9 @@
 package server.diagnosis.server_management;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,28 +12,40 @@ import org.apache.logging.log4j.Logger;
 public class ClientConnect implements Runnable {
     private static final Logger logger = LogManager.getLogger();
 
-	public Socket client;
-	public ObjectInputStream in;
-	public ObjectOutputStream out;
+	private Socket clientSocket;
+	// private Diagnosis d;
 
-	public ClientConnect(Socket client) {
-		logger.info("stub log");
-		try {
-			in = new ObjectInputStream(client.getInputStream());
-			out = new ObjectOutputStream(client.getOutputStream());
-		} catch(IOException e) {
-			System.err.println(e);
-			return;
-		}
-	}
-
-	private void log(String msg) {
-		System.out.println(msg);
+	public ClientConnect(Socket clientSocket) {
+		logger.info("Client Connect stub log");
+		this.clientSocket = clientSocket;
 	}
 
 	@Override
 	public void run() {
-		System.out.println("Ran in clientConnect.java");
+
+		try {
+			InputStreamReader isr = new InputStreamReader(clientSocket.getInputStream());
+			BufferedReader in = new BufferedReader(isr);
+			PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
+
+			// Diagnosis implementation goes below here
+			if (in.readLine().equals("Team 5 start")) {
+				String s = "Client sent: " + in.readLine();
+				logger.info(s);
+				out.println("It's working!!!");
+			}
+
+
+
+
+			//out.close();
+			//in.close();
+			//isr.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 }

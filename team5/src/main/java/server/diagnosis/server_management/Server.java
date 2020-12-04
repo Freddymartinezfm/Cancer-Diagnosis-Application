@@ -8,18 +8,40 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Server {
+
     private static final Logger logger = LogManager.getLogger();
-	private int port = 1001;
-	private ServerSocket server = null;
-	private Socket client = null;
+	private int port = 7123;
+	private ServerSocket serverSocket = null;
 
-	public void start() {
+	public void runServer() {
+		try {
+			serverSocket = new ServerSocket(port);
+			logger.info("Socket Server connected to port");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		initializeServer();
-		startListening();
+		while (true) {
+			try {
+				Socket clientSocket = serverSocket.accept();
+				logger.info("Client Socket accepted");
+				ClientConnect cc = new ClientConnect(clientSocket);
+				new Thread(cc).start();
+				logger.info("New thread started");
+
+				clientSocket.close();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
+	
+} 
 
-	private void initializeServer() {
+/*
+private void initializeServer() {
 		logger.info("initializeServer");
 		try {
 			server = new ServerSocket(port);
@@ -54,5 +76,5 @@ public class Server {
 	public static void main(String[] args) throws IOException {
 		new Server().start();
 	}
-	
-}
+
+*/

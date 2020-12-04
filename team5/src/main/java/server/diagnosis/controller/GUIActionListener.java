@@ -12,6 +12,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.swing.*;
 
 import server.diagnosis.component.UserTextAreaAppender;
+import server.diagnosis.server_management.Client;
 import server.diagnosis.view.Panel;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +31,7 @@ public class GUIActionListener implements ActionListener {
     private JTextArea output;
     private String[] patientInfo = new String[11]; // this is the array to be used for the XML
     private String[] patientInfoPrint = new String[11]; // this is the array to be used for the textArea output
+    private boolean valid;
 
     public GUIActionListener(Panel panel) {
         logger.info("stub log");
@@ -47,7 +49,7 @@ public class GUIActionListener implements ActionListener {
         JButton button = (JButton) e.getSource();
         if (button == panel.getValidButton()) {
             saveForm();
-            validate();
+            valid = validate();
             output.setText("Validating");
             //add: print to textArea if valid or not
             panel.getCanvas().repaint();
@@ -56,6 +58,11 @@ public class GUIActionListener implements ActionListener {
             //connecting code to be added for the server
             output.setText("Connecting for diagnosis");
             // info should be verified
+
+            // remove line below (for testing purposes)
+            valid = true;
+            
+            if (valid) new Client();
 
             panel.getCanvas().repaint();
             

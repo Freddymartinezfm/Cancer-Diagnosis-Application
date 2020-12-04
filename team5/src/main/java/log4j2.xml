@@ -9,28 +9,24 @@
 
     <!-- Logging Appenders -->
     <Appenders>
-        <Console name="console" target="SYSTEM_OUT">
+        <Console name="console" target="STDOUT">
             <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
-
-        <RollingFile name="fileLogger" fileName="${APP_LOG_ROOT}/log.log" filePattern="${APP_LOG_ROOT}/log.log">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+        <RollingFile name="fileLogger" fileName="${APP_LOG_ROOT}/app_log.log" filePattern="${APP_LOG_ROOT}/app_log.%d{HH:mm:ss.SSS}.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
 
             <Policies>
-                <TimeBasedTriggeringPolicy />
-                <SizeBasedTriggeringPolicy/>
-                <OnStartupTriggeringPolicy>
-                </OnStartupTriggeringPolicy>
+            <OnStartupTriggeringPolicy>
+            </OnStartupTriggeringPolicy>
+
             </Policies>
-        
         </RollingFile>
+        
     </Appenders>
-    <!-- Logging Loggers -->
+
+
+    <!--Loggers -->
     <Loggers>
-
-        
-        
-
         <Root level = "TRACE">
             <AppenderRef ref="console"/>
             <AppenderRef ref="fileLogger"/>

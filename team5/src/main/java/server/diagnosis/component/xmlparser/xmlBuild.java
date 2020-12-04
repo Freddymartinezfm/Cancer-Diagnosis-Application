@@ -81,7 +81,7 @@ public class xmlBuild {
 
             transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("C:\\Users\\Chase Minden\\Documents\\GitHub\\Cancer-Diagnosis-Application\\patient_info.xml"));
+            StreamResult result = new StreamResult(new File("patient_info.xml"));
             transformer.transform(source, result);
 
 

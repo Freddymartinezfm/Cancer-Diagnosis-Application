@@ -10,10 +10,11 @@ public class xmlStarter {
 
     private void start(){
         //testing build and parse
-        xmlBuild xmlBuilder = new xmlBuild();
-        xmlBuilder.build();
+        xmlBuild builder = new xmlBuild();
+        builder.build();
 
-        
+        xmlParse parser = new xmlParse();
+        parser.parse();
 
     }
 }

@@ -1,3 +1,0 @@
-21:39:57.049 [main] INFO  server.diagnosis.component.LoggingManager - info
-21:39:57.398 [main] INFO  server.diagnosis.controller.GUIActionListener - stub log
-21:39:57.616 [main] INFO  server.diagnosis.server_management.ServerStarter - stub log

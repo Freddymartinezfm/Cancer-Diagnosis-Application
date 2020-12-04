@@ -6,33 +6,35 @@ import java.util.*;
  * 
  */
 public class Diagnosis {
-
-	/**
-	 * Default constructor
-	 */
-	public Diagnosis() {
-	}
-
+	
 	/**
 	 * 
 	 */
 	private DiagnosisImplementation impl;
 
-
+	/**
+	 * Default constructor
+	 */
+	public Diagnosis(DiagnosisImplementation impl) {
+		this.impl = impl;
+		
+	}
 
 	/**
 	 * 
 	 */
 	public void runDiagnosis() {
 		// TODO implement here
+		impl.runDiagnosis();
+
 	}
 
 	/**
-	 * @return
+	 * @return 
 	 */
 	public DiagnosisImplementation getImpl() {
 		// TODO implement here
-		return null;
+		return impl;
 	}
 
 	/**
@@ -40,6 +42,7 @@ public class Diagnosis {
 	 */
 	public void setImpl(DiagnosisImplementation value) {
 		// TODO implement here
+		this.impl = value;
 	}
 
 }

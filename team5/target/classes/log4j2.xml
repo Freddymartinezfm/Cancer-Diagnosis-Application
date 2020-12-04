@@ -2,49 +2,34 @@
 <Configuration >
     <!-- Logging Properties -->
     <Properties>
-        <Property name="LOG_PATTERN">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</Property>
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="logPath">C:\\logs</Property>
+
     </Properties>
 
     <!-- Logging Appenders -->
     <Appenders>
-        <Console name="console-appender" target="SYSTEM_OUT">
+        <Console name="console" target="STDOUT">
             <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
+        <RollingFile name="fileLogger" fileName="${APP_LOG_ROOT}/app_log.log" filePattern="${APP_LOG_ROOT}/app_log.%d{HH:mm:ss.SSS}.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
 
-        <RollingFile name="rolling-log-file-appender"
-                     fileName="${APP_LOG_ROOT}/rolling-log-file-appender.log"
-                     filePattern="${APP_LOG_ROOT}/log-file.log.%d{yyyy-MM-dd-hh-mm}">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
-                <TimeBasedTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="19500KB"/>
+            <OnStartupTriggeringPolicy>
+            </OnStartupTriggeringPolicy>
+
             </Policies>
-            <DefaultRolloverStrategy max="30"/>
         </RollingFile>
-
-        <appender name="textAreaAppender" class="server.diagnosis.component.UserTextAreaAppender">
-            <param name="Threshold" value = "INFO"/>
-            <layout class="PatternLayout">
-                <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1}"/>
-            </layout>
-        </appender>
-
+        
     </Appenders>
-    <!-- Logging Loggers -->
+
+
+    <!--Loggers -->
     <Loggers>
-
-        <Logger name ="file-appender">
-            <AppenderRef ref="rolling-log-file-appender"/>
-        </Logger>
-        
-        <Logger name ="textAreaAppender">
-            <AppenderRef ref="textAreaAppender"/>
-        </Logger>
-
-        
-
         <Root level = "TRACE">
-            <AppenderRef ref="console-appender"/>
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="fileLogger"/>
         </Root>
 
     </Loggers>

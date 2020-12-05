@@ -18,7 +18,7 @@ public class xmlBuild {
         transformerFactory = TransformerFactory.newInstance();
     }
 
-    public void build(String [] patientInfo){
+    public void build(){
         //patientInfo not currently used
         try{
             builder = factory.newDocumentBuilder();
@@ -38,7 +38,7 @@ public class xmlBuild {
             patient.setAttributeNode(id);
 
             //start creating subelements
-            Element clump_thickness = doc.createElement("clump_thickness\n");
+            Element clump_thickness = doc.createElement("clump_thickness");
             clump_thickness.appendChild(doc.createTextNode("1"));
             patient.appendChild(clump_thickness);
 
@@ -79,7 +79,6 @@ public class xmlBuild {
             _class.appendChild(doc.createTextNode("1"));
             patient.appendChild(_class);
 
-
             transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("patient_info.xml"));
@@ -88,7 +87,7 @@ public class xmlBuild {
 
 
         }catch(Exception e){
-
+            System.out.println("Error in build," + e.toString());
         }
     }
 }

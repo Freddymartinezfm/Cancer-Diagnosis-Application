@@ -22,6 +22,10 @@ public class xmlParse {
             Document doc = builder.parse(inputFile);
             Element root = doc.getDocumentElement();
 
+            //System.out.println("Testing xmlParse");
+           // System.out.println("Expecting root to be Dataset");
+           // System.out.println("Root :" + root.getNodeName());
+
             NodeList list = doc.getElementsByTagName("Patient");
             // only one patient in xml
             Node n = list.item(0);
@@ -41,7 +45,7 @@ public class xmlParse {
             patientInfo[10] = e.getElementsByTagName("class").item(0).getTextContent();
 
         } catch (Exception e) {
-
+            System.out.println("Error in parse");
         }
     }
 

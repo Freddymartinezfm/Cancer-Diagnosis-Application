@@ -23,10 +23,10 @@ public class Diagnosis {
 	/**
 	 * 
 	 */
-	public void runDiagnosis() {
+	public int runDiagnosis(String diagnosis) {
 		// TODO implement here
 		impl.runDiagnosis();
-
+		return 1;
 	}
 
 	/**

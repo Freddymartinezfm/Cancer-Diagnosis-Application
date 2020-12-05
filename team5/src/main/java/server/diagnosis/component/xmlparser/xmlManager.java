@@ -1,20 +1,22 @@
 package server.diagnosis.component.xmlparser;
-import java.io.*;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
 
 public class xmlManager {
-    public xmlManager(){
-        start();
+    private xmlBuild builder;
+    private xmlParse parser;
+    String[] patientInfo;
+
+    public xmlManager() {
+        builder = new xmlBuild();
+        parser = new xmlParse();
+        patientInfo = new String[11];
     }
 
-    private void start(){
-        //testing build and parse
-        xmlBuild builder = new xmlBuild();
-        builder.build();
+    public void build() {
+        builder.build(patientInfo);
+    }
 
-        xmlParse parser = new xmlParse();
+    public void parse() {
         parser.parse();
-
     }
+
 }

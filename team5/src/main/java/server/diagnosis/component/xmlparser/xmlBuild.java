@@ -8,17 +8,17 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
 
 public class xmlBuild {
-    DocumentBuilder builder;
-    DocumentBuilderFactory factory;
-    TransformerFactory transformerFactory;
-    Transformer transformer;
+    private DocumentBuilder builder;
+    private DocumentBuilderFactory factory;
+    private TransformerFactory transformerFactory;
+    private Transformer transformer;
 
     public xmlBuild(){
         factory = DocumentBuilderFactory.newInstance();
         transformerFactory = TransformerFactory.newInstance();
     }
 
-    public void build(){
+    public void build(String [] patientInfo){
         try{
             builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();

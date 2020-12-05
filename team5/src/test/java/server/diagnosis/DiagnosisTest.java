@@ -7,9 +7,6 @@ import org.junit.Test;
 import JUnit4.jupiter.api.BeforeEach;
 
 public class DiagnosisTest {
-
-
-
 	// @Test
 	// public void testPositiveDiagnosis(){
 	// 	DiagnosisImplementation impl = new StubImplementation();

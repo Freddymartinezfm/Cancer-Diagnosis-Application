@@ -19,4 +19,7 @@ public class xmlManager {
         parser.parse();
     }
 
+    public String [] getInfo(){
+        return parser.getPatientInfo();
+    }
 }

@@ -19,6 +19,7 @@ public class xmlBuild {
     }
 
     public void build(String [] patientInfo){
+        //patientInfo not currently used
         try{
             builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();

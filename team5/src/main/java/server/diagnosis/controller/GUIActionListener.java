@@ -55,7 +55,7 @@ public class GUIActionListener implements ActionListener {
 
         } else if (button == panel.getDiagnoseButton()) {
             //connecting code to be added for the server
-            output.append("Connecting for diagnosis...\n");
+            output.append(" Connecting for diagnosis...\n");
             // info should be verified
 
             // remove line below (for testing purposes)
@@ -67,25 +67,25 @@ public class GUIActionListener implements ActionListener {
             
         } else if (button == panel.getLoginButton()) {
             //dummy prototype for logging in
-            output.append("Logging in...\n");
+            output.append(" Logging in...\n");
 
             panel.getCanvas().repaint();
 
         } else if (button == panel.getDisconnectButton()) {
             //code to close the ports and then exit program
-            output.append("Disconnecting\n");
+            output.append(" Disconnecting\n");
             panel.getCanvas().repaint();
 
         } else if (button == panel.getLoadButton()) {
             //prototype for loading patient data from database
             fillTextFieldOne();
-            output.append("Loading\n");
+            output.append(" Loading\n");
             panel.getCanvas().repaint();
 
         } else if (button == panel.getClearButton()) {
             fillTextField();
             clearTextField();
-            output.append("Cleared patient info\n");
+            output.append(" Cleared patient info\n");
             panel.getCanvas().repaint();
         } else if (button == panel.getClearTextAreaButton()) {          
             output.selectAll();
@@ -105,7 +105,7 @@ public class GUIActionListener implements ActionListener {
                 char[] chars = tempString.toCharArray();
                 for(char c: chars) {
                     if(Character.isLetter(c)) {
-                        output.append("Invalid input.\n");
+                        output.append(" Invalid input.\n");
                         return false;
                     }
                 }
@@ -116,13 +116,13 @@ public class GUIActionListener implements ActionListener {
             }            
         }
         if (count == 10) {
-            output.append("Input accepted.\n");
+            output.append(" Input accepted:\n\n");
             printForm();
-            output.append("Please press Diagnose button if patient information is correct\n");
+            output.append("\n Please press Diagnose button if patient information is correct.\n");
             panel.getDiagnoseButton().setEnabled(true);
             return true;
         } else {
-            output.append("Invalid: Please enter a numeric value from 1-10\n");
+            output.append(" Invalid: Please enter a numeric value from 1-10\n");
             return false;
         }
     }
@@ -168,7 +168,7 @@ public class GUIActionListener implements ActionListener {
 
     private void printForm() {
         for (int i = 0; i < patientInfoPrint.length; i++) {
-            output.append(patientInfoPrint[i] +"\n");
+            output.append("     " + patientInfoPrint[i] +"\n");
         }
     }
 

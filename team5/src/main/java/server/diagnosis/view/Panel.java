@@ -20,7 +20,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.ImageIcon;
 
 import server.diagnosis.controller.GUIActionListener;
-import server.diagnosis.view.Panel;
+
 public class Panel  {
 
     // <id>1000025</id>
@@ -236,7 +236,7 @@ public class Panel  {
         //text area
         canvas = new Canvas(this);
         cp.add(BorderLayout.CENTER, canvas);
-        stuff = new JTextArea("Ready for session\n");
+        stuff = new JTextArea(" Ready for session\n");
         JScrollPane scrollPane = new JScrollPane(stuff);
         canvas.add(scrollPane);
         stuff.setEditable(false);

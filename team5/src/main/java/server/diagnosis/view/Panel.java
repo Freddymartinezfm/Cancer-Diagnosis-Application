@@ -17,6 +17,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.ImageIcon;
 
 import server.diagnosis.controller.GUIActionListener;
 import server.diagnosis.view.Panel;
@@ -32,9 +33,10 @@ public class Panel  {
     // <chromatin>3</chromatin>
     // <nucleoli>1</nucleoli>
     // <mitoses>1</mitoses>
-    // <class>2</class>    
+    // <class>2</class>
 
     private JFrame window;
+    JLabel medPic = new JLabel(new ImageIcon("Cancer-Diagnosis-Application/team5/src/main/java/server/diagnosis/view/med.jpg"));
 
     private JButton diagnoseButton = new JButton("Diagnose");
     private JButton disconnectButton = new JButton("End Session");
@@ -69,13 +71,10 @@ public class Panel  {
         // panel for inputting form information
         JPanel westPanel = new JPanel();
         cp.add(BorderLayout.WEST, westPanel);
-        westPanel.setPreferredSize(new Dimension(250, 400));
+        westPanel.setPreferredSize(new Dimension(250, 550));
         westPanel.setBackground(Color.lightGray);
         westPanel.setForeground(Color.black);
         westPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
-
-        // JSeparator s = new JSeparator(SwingConstants.HORIZONTAL);
-        // westPanel.add(s);
 
         // variables
         JLabel IDName = new JLabel("ID Number: ");
@@ -86,7 +85,7 @@ public class Panel  {
         westPanel.add(IDName);
         westPanel.add(patientIDText);
         patientIDText.setEditable(true);
-
+        
         JLabel clumpLabel = new JLabel("Clump Thickness: ");
         clumpLabel.setPreferredSize(new Dimension(100, 20));
         westPanel.add(clumpLabel);
@@ -177,10 +176,13 @@ public class Panel  {
         westPanel.add(BorderLayout.EAST, classText);
         bareText.setEditable(true);
 
-        // validButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         westPanel.add(BorderLayout.CENTER, validButton);
         westPanel.add(BorderLayout.CENTER, loadButton);
         westPanel.add(BorderLayout.CENTER, clearButton);
+
+        //adds gui pic
+        westPanel.add(BorderLayout.CENTER, medPic);
+        medPic.setBorder(new LineBorder(Color.lightGray, 1));
 
         // panel for connecting
         JPanel southPanel = new JPanel();
@@ -239,7 +241,6 @@ public class Panel  {
         canvas.add(scrollPane);
         stuff.setEditable(false);
         stuff.setLineWrap(true);
-        //stuff.append("in terms of success in connecting to the server and logs\np\nk\nk\nj\ny\nu\nr\ne\ne\nw\nw\nt\nt\ny\ny\ny\ny\ny\ny\ni\n");
         stuff.setBorder(new LineBorder(Color.black, 1));
         scrollPane.setBorder(new LineBorder(Color.black, 1));
         scrollPane.setPreferredSize(new Dimension(500, 550));
@@ -335,7 +336,7 @@ public class Panel  {
     public JTextField getClassText() {
         return classText;
     }
-    
+
     public JButton getClearTextAreaButton() {
         return clearTextAreaButton;
     }

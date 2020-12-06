@@ -31,6 +31,7 @@ public class GUIActionListener implements ActionListener {
     private JTextArea output;
     private String[] patientInfo = new String[11]; // this is the array to be used for the XML
     private String[] patientInfoPrint = new String[11]; // this is the array to be used for the textArea output
+    private JTextField[] textFieldAr = new JTextField[11];
     private boolean valid;
 
     public GUIActionListener(Panel panel) {
@@ -54,7 +55,7 @@ public class GUIActionListener implements ActionListener {
 
         } else if (button == panel.getDiagnoseButton()) {
             //connecting code to be added for the server
-            output.append("Connecting for diagnosis\n");
+            output.append("Connecting for diagnosis...\n");
             // info should be verified
 
             // remove line below (for testing purposes)
@@ -82,7 +83,8 @@ public class GUIActionListener implements ActionListener {
 
         } else if (button == panel.getClearButton()) {
             patientInfo = null;
-            output.append("Cleared patient info\n"); //empties array
+            clearTextField();
+            output.append("Cleared patient info\n");
             panel.getCanvas().repaint();
         } else if (button == panel.getClearTextAreaButton()) {          
             output.selectAll();
@@ -112,7 +114,7 @@ public class GUIActionListener implements ActionListener {
             }            
         }
         if (count == 10) {
-            output.append("Input accepted...\n");
+            output.append("Input accepted.\n");
             printForm();
             output.append("Please press Diagnose button if patient information is correct\n");
             panel.getDiagnoseButton().setEnabled(true);
@@ -136,6 +138,18 @@ public class GUIActionListener implements ActionListener {
         patientInfo[9] = panel.getMitText().getText();
         patientInfo[10] = panel.getClassText().getText();
 
+        textFieldAr[0] = panel.getPatientIDText();
+        textFieldAr[1] = panel.getClumpText();
+        textFieldAr[2] = panel.getCellText();
+        textFieldAr[3] = panel.getCellText2();
+        textFieldAr[4] = panel.getAdText();
+        textFieldAr[5] = panel.getSingText();
+        textFieldAr[6] = panel.getBareText();
+        textFieldAr[7] = panel.getBlandText();
+        textFieldAr[8] = panel.getNormText();
+        textFieldAr[9] = panel.getMitText();
+        textFieldAr[10] = panel.getClassText();
+
         patientInfoPrint[0] = "Patient ID: " + panel.getPatientIDText().getText();
         patientInfoPrint[1] = "Clump Thickness: " + panel.getClumpText().getText();
         patientInfoPrint[2] = "Uniformity Cell Size: " + panel.getCellText().getText();
@@ -153,6 +167,12 @@ public class GUIActionListener implements ActionListener {
     private void printForm() {
         for (int i = 0; i < patientInfoPrint.length; i++) {
             output.append(patientInfoPrint[i] +"\n");
+        }
+    }
+
+    private void clearTextField() {
+        for (int i = 0; i < textFieldAr.length; i++) {
+            textFieldAr[i].setText(null);
         }
     }
 

@@ -23,10 +23,9 @@ public class Diagnosis {
 	/**
 	 * 
 	 */
-	public int runDiagnosis(String diagnosis) {
+	public int runDiagnosis(String xml) {
 		// TODO implement here
-		impl.runDiagnosis();
-		return 1;
+		return impl.runDiagnosis(xml);
 	}
 
 	/**

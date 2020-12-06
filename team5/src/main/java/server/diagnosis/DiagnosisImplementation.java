@@ -11,15 +11,16 @@ public class DiagnosisImplementation {
 	 * Default constructor
 	 */
 	public DiagnosisImplementation() {
-		
+
 	}
 
 
 	/**
 	 * 
 	 */
-	public void runDiagnosis() {
+	public int runDiagnosis(String xml) {
 		// TODO implement here
+		return 2;
 	}
 
 }

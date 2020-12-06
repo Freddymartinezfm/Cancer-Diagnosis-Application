@@ -340,4 +340,6 @@ public class Panel  {
     public JButton getClearTextAreaButton() {
         return clearTextAreaButton;
     }
+
+    
 }

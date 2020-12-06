@@ -17,7 +17,7 @@ public class xmlBuildTest  {
 	@Test
 	public void testXmlBuild(){
 		xmlBuild xmlBuild = new xmlBuild();
-		xmlBuild.build();
+		//xmlBuild.build();
 		// assertNotNull(xmlBuild.build());
 		
 	}

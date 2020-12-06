@@ -20,10 +20,6 @@ public class Main {
         // LoggingManager.logger.info("info");
          new GUIStarter();
          
-         xmlManager xml = new xmlManager();
-         xml.build();
-         xml.parse(); //xml.getInfo() to get array
-         
         // new ServerStarter();
         new PeerManagement();
     }

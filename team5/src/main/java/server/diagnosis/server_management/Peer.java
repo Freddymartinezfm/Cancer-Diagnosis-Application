@@ -1,6 +1,7 @@
 package server.diagnosis.server_management;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -12,8 +13,12 @@ import server.diagnosis.DiagnosisImplementation;
 import server.diagnosis.StubImplementation;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -34,8 +39,18 @@ public class Peer extends Thread {
 		try {
 			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+			
+			//create new xmlfile at location to parse
+			File outputFile = new File("patient_info2.xml");
+			OutputStream out = new FileOutputStream(outputFile);
+			InputStream in = socket.getInputStream();
+			byte[] bytes = new byte[2*1024];
+			int count;
+			while ((count = in.read(bytes)) > 0) {
+				out.write(bytes, 0, count);
+			}
 
-			while (true){
+			/*while (true){
 				String echoString = input.readLine();
 				// diagnosis
 				System.out.println(echoString);
@@ -49,7 +64,7 @@ public class Peer extends Thread {
 					break;
 				}
 
-			}
+			}*/
 
 		} catch (IOException e){
 			System.out.println("Oops: " +e.getMessage());

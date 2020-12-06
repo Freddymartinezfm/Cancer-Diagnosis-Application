@@ -33,8 +33,9 @@ public class PeerManagement {
 				server = new Peer(socket);
 			
 				server.start();
+				
 			}
-		} catch (IOException e){
+		} catch (IOException e) {
 			logger.error("Server Exception " + e.getMessage());
 		}
 	}

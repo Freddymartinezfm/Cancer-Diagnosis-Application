@@ -1,8 +1,13 @@
 package server.diagnosis.server_management;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -34,18 +39,31 @@ public class Client {
 				// now get info from user or oher server
 				Scanner sc = new Scanner(System.in);
 				String echoString; // object to send back to server
+
+				//start of convert file to byte data
+				File xmlFile = new File("patient_info.xml");
+				InputStream inFile = new FileInputStream(xmlFile);
+				OutputStream outFile = socket.getOutputStream();
+				int count;
+				byte[] bytes = new byte[2*1024];
+				while ((count = inFile.read(bytes)) > 0) {
+					outFile.write(bytes, 0, count);
+				}
+				inFile.close();
+				//end
+
 				String response;
-				do {
+				/*do {
 					System.out.println("enter data to be echoed");
 					echoString = sc.nextLine();
-					stringToEcho.println(echoString);
+					stringToEcho.println(echoString); //originally echoString
 					if (!echoString.equals("exit")) {
 						response = echoes.readLine();
 						System.out.println(response + " other data to be be sent back");
 					}
-				} while (!echoString.equals("exit"));
+				} while (!echoString.equals("exit"));*/
 			} catch(IOException e){
-				System.out.println(e.getMessage());
+				System.out.println("uh oh" + e.getMessage());
 			}
 		}
 		

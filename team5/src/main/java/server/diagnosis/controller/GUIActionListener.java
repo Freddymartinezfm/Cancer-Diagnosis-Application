@@ -83,7 +83,6 @@ public class GUIActionListener implements ActionListener {
             panel.getCanvas().repaint();
 
         } else if (button == panel.getClearButton()) {
-            patientInfo = null;
             fillTextField();
             clearTextField();
             output.append("Cleared patient info\n");
@@ -182,26 +181,36 @@ public class GUIActionListener implements ActionListener {
     private void fillTextFieldOne() {
         textFieldAr[0] = panel.getPatientIDText();
         textFieldAr[0].setText("1");
+        patientInfo[0] ="1";
         textFieldAr[1] = panel.getClumpText();
         textFieldAr[1].setText("1");
+        patientInfo[1] ="1";
         textFieldAr[2] = panel.getCellText();
         textFieldAr[2].setText("1");
+        patientInfo[2] ="1";
         textFieldAr[3] = panel.getCellText2();
         textFieldAr[3].setText("1");
+        patientInfo[3] ="1";
         textFieldAr[4] = panel.getAdText();
         textFieldAr[4].setText("1");
+        patientInfo[4] ="1";
         textFieldAr[5] = panel.getSingText();
         textFieldAr[5].setText("1");
+        patientInfo[5] ="1";
         textFieldAr[6] = panel.getBareText();
         textFieldAr[6].setText("1");
         textFieldAr[7] = panel.getBlandText();
         textFieldAr[7].setText("1");
+        patientInfo[7] ="1";
         textFieldAr[8] = panel.getNormText();
+        patientInfo[8] ="1";
         textFieldAr[8].setText("1");
         textFieldAr[9] = panel.getMitText();
         textFieldAr[9].setText("1");
+        patientInfo[9] ="1";
         textFieldAr[10] = panel.getClassText();
         textFieldAr[10].setText("1");
+        patientInfo[10] ="1";
 
     }
 
@@ -209,28 +218,37 @@ public class GUIActionListener implements ActionListener {
         
         textFieldAr[0] = panel.getPatientIDText();
         textFieldAr[0].setText("0");
+        patientInfo[0] ="0";
         textFieldAr[1] = panel.getClumpText();
         textFieldAr[1].setText("0");
+        patientInfo[1] ="0";
         textFieldAr[2] = panel.getCellText();
         textFieldAr[2].setText("0");
+        patientInfo[2] ="0";
         textFieldAr[3] = panel.getCellText2();
         textFieldAr[3].setText("0");
+        patientInfo[3] ="0";
         textFieldAr[4] = panel.getAdText();
         textFieldAr[4].setText("0");
+        patientInfo[4] ="0";
         textFieldAr[5] = panel.getSingText();
         textFieldAr[5].setText("0");
+        patientInfo[5] ="0";
         textFieldAr[6] = panel.getBareText();
         textFieldAr[6].setText("0");
+        patientInfo[6] ="0";
         textFieldAr[7] = panel.getBlandText();
         textFieldAr[7].setText("0");
+        patientInfo[7] ="0";
         textFieldAr[8] = panel.getNormText();
         textFieldAr[8].setText("0");
+        patientInfo[8] ="0";
         textFieldAr[9] = panel.getMitText();
         textFieldAr[9].setText("0");
+        patientInfo[9] ="0";
         textFieldAr[10] = panel.getClassText();
         textFieldAr[10].setText("0");
-    
-        
+        patientInfo[10] ="0";        
     }
 
     public String[] getPatientInfo() {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,30 +28,24 @@ public class Client {
 		int[] peerPorts = {7123};
 
 		for (int p: peerPorts) {
-			try {
-				clientSocket = new Socket(hostName, p);
-				logger.info("Client Socket connected to Server Socket");
-				out = new PrintWriter(clientSocket.getOutputStream(), true);
-				isr = new InputStreamReader(clientSocket.getInputStream());
-				in = new BufferedReader(isr);
-	
-				// code for sending server patient info below
-				out.println("Team 5 start");
-				logger.info("Client Sent initial message");
-				String s = in.readLine();
-				logger.info(s);
-	
-	
-	
-	
-	
-				in.close();
-				isr.close();
-				out.close();
-				clientSocket.close();
-	
-			} catch (IOException e) {
-				System.exit(1);
+			try(Socket socket = new Socket("localhost", p)){
+				BufferedReader echoes = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				PrintWriter stringToEcho = new PrintWriter(socket.getOutputStream(), true);
+				// now get info from user or oher server
+				Scanner sc = new Scanner(System.in);
+				String echoString; // object to send back to server
+				String response;
+				do {
+					System.out.println("enter data to be echoed");
+					echoString = sc.nextLine();
+					stringToEcho.println(echoString);
+					if (!echoString.equals("exit")) {
+						response = echoes.readLine();
+						System.out.println(response + " other data to be be sent back");
+					}
+				} while (!echoString.equals("exit"));
+			} catch(IOException e){
+				System.out.println(e.getMessage());
 			}
 		}
 		

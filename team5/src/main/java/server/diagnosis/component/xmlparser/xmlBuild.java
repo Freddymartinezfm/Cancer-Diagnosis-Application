@@ -8,10 +8,10 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
 
 public class xmlBuild {
-    DocumentBuilder builder;
-    DocumentBuilderFactory factory;
-    TransformerFactory transformerFactory;
-    Transformer transformer;
+    private DocumentBuilder builder;
+    private DocumentBuilderFactory factory;
+    private TransformerFactory transformerFactory;
+    private Transformer transformer;
 
     public xmlBuild(){
         factory = DocumentBuilderFactory.newInstance();
@@ -19,6 +19,7 @@ public class xmlBuild {
     }
 
     public void build(){
+        //patientInfo not currently used
         try{
             builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();
@@ -33,7 +34,7 @@ public class xmlBuild {
             //practice setting patient id
             //id will come from patient model
             Attr id = doc.createAttribute("id");
-            id.setValue("1");   //temp test right now
+            id.setValue("1234");   //temp test right now
             patient.setAttributeNode(id);
 
             //start creating subelements
@@ -78,7 +79,6 @@ public class xmlBuild {
             _class.appendChild(doc.createTextNode("1"));
             patient.appendChild(_class);
 
-
             transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("patient_info.xml"));
@@ -87,7 +87,7 @@ public class xmlBuild {
 
 
         }catch(Exception e){
-
+            System.out.println("Error in build," + e.toString());
         }
     }
 }

@@ -7,20 +7,16 @@ public class ServerStarter {
 	private static final Logger logger = LogManager.getLogger();
 
 
-	private int[] ports = {1001, 1002, 1003};
-
+	
 	public ServerStarter() {
-		logger.info("stub log");
-		
-		for(int i = 0; i < ports.length; i++) {
-			// new Server(ports[i]).start();
-		}
-		
+		logger.info("Server Starter stub log");	
+		start();
+	}
 
-		//new Server(ports[0]).start();
-		//new Server(ports[1]).start();
-		//new Server(ports[2]).start();
-
+	public void start() {
+		logger.info("Server Starting...");
+		Server s = new Server();
+		s.runServer();
 	}
 
 	

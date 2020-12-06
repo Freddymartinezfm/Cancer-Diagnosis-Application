@@ -5,6 +5,7 @@ Copywrite UCO Software Engineering I Group 5
  */
 package server.diagnosis.view;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import server.diagnosis.component.LoggingManager;
@@ -18,10 +19,13 @@ public class GUIStarter {
 
 	private void start() {
 
-		JFrame window = new JFrame();
+        JFrame window = new JFrame();
+        ImageIcon ribbon = new ImageIcon("Cancer-Diagnosis-Application/team5/src/main/java/server/diagnosis/view/ribbon.jpg");
+        
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocation(400, 100);
-        window.setTitle("Group 5 Breast Cancer Diagnosis Application");
+        window.setTitle("Team 5 Breast Cancer Diagnosis Application");
+        window.setIconImage(ribbon.getImage());
 
         Panel panel = new Panel(window);
         panel.init();

@@ -36,7 +36,7 @@ public class Panel  {
     // <class>2</class>
 
     private JFrame window;
-    JLabel medPic = new JLabel(new ImageIcon("Cancer-Diagnosis-Application/team5/src/main/java/server/diagnosis/view/med.jpg"));
+    JLabel medPic = new JLabel(new ImageIcon("resources\\images\\med.jpg"));
 
     private JButton diagnoseButton = new JButton("Diagnose");
     private JButton disconnectButton = new JButton("End Session");
@@ -181,8 +181,14 @@ public class Panel  {
         westPanel.add(BorderLayout.CENTER, clearButton);
 
         //adds gui pic
-        westPanel.add(BorderLayout.CENTER, medPic);
-        medPic.setBorder(new LineBorder(Color.lightGray, 1));
+        if (medPic == null){
+            System.err.println("picutre error");
+        } else {
+            System.err.println("picture loaded successfully");
+            westPanel.add(BorderLayout.CENTER, medPic);
+            medPic.setBorder(new LineBorder(Color.lightGray, 1));
+
+        }
 
         // panel for connecting
         JPanel southPanel = new JPanel();

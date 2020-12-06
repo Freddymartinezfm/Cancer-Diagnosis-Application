@@ -20,9 +20,11 @@ public class StubImplementation extends DiagnosisImplementation {
 	/**
 	 * 
 	 */
-	public void runDiagnosis() {
+	public int runDiagnosis(String xml) {
 		// TODO implement here
 		logger.info("Stub Implementation");
+		return 2;
+
 
 		
 	}

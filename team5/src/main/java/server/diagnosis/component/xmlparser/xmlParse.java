@@ -41,6 +41,9 @@ public class xmlParse{
             patientInfo[8] = e.getElementsByTagName("normal_nucleoli").item(0).getTextContent();
             patientInfo[9] = e.getElementsByTagName("mitoses").item(0).getTextContent();
             patientInfo[10] = e.getElementsByTagName("class").item(0).getTextContent();
+
+
+            
             
         }catch(Exception e){
 

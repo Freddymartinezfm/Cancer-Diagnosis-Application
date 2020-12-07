@@ -48,7 +48,7 @@ public class Peer extends Thread {
 			String s = " ";
 			while (true) { 
 				if (ip.isLoopbackAddress()){  // local connection
-					System.out.println("Local connection ");
+					// System.out.println("Local connection ");
 					output.println("Local connection ");
 					logger.info("local");
 					s = input.readLine();
@@ -79,6 +79,7 @@ public class Peer extends Thread {
 					System.out.println("read " + s + " from connection ");
 					
 				}
+				new Peer(socket);
 
 
 				// Diagnosis implementation goes below here, outside of if else statement 
@@ -97,6 +98,7 @@ public class Peer extends Thread {
 
 		} catch (IOException e){
 			System.out.println("Oops no client connnection: " +e.getMessage());
+
 		} finally {
 			try {
 				socket.close();

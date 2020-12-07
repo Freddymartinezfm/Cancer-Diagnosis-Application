@@ -1,5 +1,7 @@
 package server.diagnosis;
 
+import java.util.Random;
+
 /**
  * 
  */
@@ -24,10 +26,10 @@ public class DiagnosisImplementation {
 		for(int i = 1; i < xml.length - 1; i++){
 			total += Integer.parseInt(xml[i]);
 		}
-		System.out.println(total);
-		int result = total % 2;
-		if(result == 0){result = 1;}else{result = 2;}
-		result *= 2;
+		int result = 0;
+		int r = (int) Math.random() * (total - 1 + 1) + 1;
+		if(r < total / 2){result = 2;}
+		else{result = 4;}
 		return result;
 
 	}

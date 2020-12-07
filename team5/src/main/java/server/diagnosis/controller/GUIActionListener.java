@@ -67,7 +67,9 @@ public class GUIActionListener implements ActionListener {
             // remove line below (for testing purposes)
             //valid = true;
             
-            if (valid) new Client();
+            // if (valid) new Client();
+            logger.info("response goes here");
+            
 
             panel.getCanvas().repaint();
             

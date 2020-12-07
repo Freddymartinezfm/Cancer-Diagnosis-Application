@@ -1,3 +1,4 @@
+/*
 package server.diagnosis.server_management;
 
 import java.io.IOException;
@@ -42,3 +43,5 @@ public class Server {
 	}
 	
 } 
+
+*/

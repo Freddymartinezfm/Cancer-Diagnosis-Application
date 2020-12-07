@@ -35,9 +35,9 @@ public class GUIActionListener implements ActionListener {
     private JTextField[] textFieldAr = new JTextField[11];
     private boolean valid;
     private xmlManager xmlManager;
+    private Client client;
 
     public GUIActionListener(Panel panel) {
-        logger.info("stub log");
         this.panel = panel;
         output = panel.getStuff();
         // info should be validated here, or in the xml code.
@@ -60,16 +60,16 @@ public class GUIActionListener implements ActionListener {
             panel.getCanvas().repaint();
 
         } else if (button == panel.getDiagnoseButton()) {
+
             //connecting code to be added for the server
             output.append(" Connecting for diagnosis...\n");
+            
             // info should be verified
-
-            
-            if (valid) new Client();
-            //logger.info("response goes here | directed to output\n");
-            //output.append("response goes here | directed to output");
-            
-
+            if (valid) {
+                client = new Client();
+            }
+            String diagnosis = client.getFinalDiagnosis();
+            output.append("The consensus diagnosis is that" + diagnosis);
             panel.getCanvas().repaint();
             
         } else if (button == panel.getLoginButton()) {
@@ -81,6 +81,7 @@ public class GUIActionListener implements ActionListener {
         } else if (button == panel.getDisconnectButton()) {
             //code to close the ports and then exit program
             output.append(" Disconnecting\n");
+            logger.info("System is shut down.");
             panel.getCanvas().repaint();
 
         } else if (button == panel.getLoadButton()) {

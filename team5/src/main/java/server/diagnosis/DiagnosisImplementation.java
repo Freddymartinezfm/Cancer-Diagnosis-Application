@@ -1,13 +1,17 @@
 package server.diagnosis;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.Random;
-
-/**
+/** This is the Implemtentor that holds the interface for different types of impementations.
+ * Derived classes of this class will override runDiagnosis to provide their unique implmentation.
+ * Currently, StubImplementation is the sole derived class and generates a random result from the patient array of information.
+ * DiagnosisImplementation could be converted to a interface for better clarity to avoid forcing the stub for runDiagnosis to be present here.
+ * 
+ * 
  * 
  */
 public class DiagnosisImplementation {
-
-
+	private static final Logger logger = LogManager.getLogger(DiagnosisImplementation.class);
 
 	/**
 	 * Default constructor
@@ -21,16 +25,7 @@ public class DiagnosisImplementation {
 	 * 
 	 */
 	public int runDiagnosis(String[] xml) {
-		// TODO implement here
-		int total = 0;
-		for(int i = 1; i < xml.length - 1; i++){
-			total += Integer.parseInt(xml[i]);
-		}
-		int result = 0;
-		int r = (int) Math.random() * (total - 1 + 1) + 1;
-		if(r < total / 2){result = 2;}
-		else{result = 4;}
-		return result;
+		return 0;
 
 	}
 

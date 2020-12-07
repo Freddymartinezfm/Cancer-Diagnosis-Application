@@ -29,6 +29,10 @@ public class Client {
 		for (int p: peerPorts) {
 			try {
 				clientSocket = new Socket(hostName, p);
+				if (clientSocket == null) {
+					logger.info("Client Socket error");
+
+				}
 				logger.info("Client Socket connected to Server Socket");
 				out = new PrintWriter(clientSocket.getOutputStream(), true);
 				isr = new InputStreamReader(clientSocket.getInputStream());

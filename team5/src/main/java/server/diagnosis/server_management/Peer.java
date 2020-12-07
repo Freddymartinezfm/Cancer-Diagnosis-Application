@@ -54,11 +54,12 @@ public class Peer extends Thread {
 					s = input.readLine();
 					System.out.println(s);
 					output.println("response contains:  " + s +  "diagnosis result");
-
+				} else { // remote connection
+					System.out.println("Remote connection ");
 					//create new xmlfile at location to parse
 					File outputFile = new File("patient_info2.xml");
-					OutputStream out = new FileOutputStream(outputFile);
 					InputStream in = socket.getInputStream();
+					OutputStream out = new FileOutputStream(outputFile);
 					byte[] bytes = new byte[2*1024];
 					int count;
 					while ((count = in.read(bytes)) > 0) {
@@ -72,10 +73,6 @@ public class Peer extends Thread {
 					Diagnosis diag = new Diagnosis(impl);
 					//diag.runDiagnosis(manager.getInfo());
 					System.out.println(diag.runDiagnosis(manager.getInfo()));
-
-				} else { // remote connection
-					System.out.println("remote ");
-					System.out.println("Remote connection ");
 					s = input.readLine();
 					logger.info("remote connection: " +  s);
 					output.println("response " + " diag result ");

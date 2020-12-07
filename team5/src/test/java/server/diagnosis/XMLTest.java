@@ -17,7 +17,7 @@ public class XMLTest {
     public void xmlParseTest(){
         xmlManager xml = new xmlManager();
         //xml.build();
-        xml.parse();
+        //xml.parse();
         //preset from xmlBuild
         //assertEquals("1234", xml.getInfo()[0]);
     }

@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import server.diagnosis.Diagnosis;
 import server.diagnosis.DiagnosisImplementation;
 import server.diagnosis.StubImplementation;
+import server.diagnosis.component.xmlparser.xmlManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -49,6 +50,14 @@ public class Peer extends Thread {
 			while ((count = in.read(bytes)) > 0) {
 				out.write(bytes, 0, count);
 			}
+			
+			xmlManager manager = new xmlManager();
+			manager.parse(outputFile);
+			
+			DiagnosisImplementation impl = new StubImplementation();
+			Diagnosis diag = new Diagnosis(impl);
+			//diag.runDiagnosis(manager.getInfo());
+			System.out.println(diag.runDiagnosis(manager.getInfo()));
 
 			/*while (true){
 				String echoString = input.readLine();

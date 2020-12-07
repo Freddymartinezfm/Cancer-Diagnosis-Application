@@ -39,44 +39,44 @@ public class xmlBuild {
 
             //start creating subelements
             Element clump_thickness = doc.createElement("clump_thickness");
-            clump_thickness.appendChild(doc.createTextNode("1"));
+            clump_thickness.appendChild(doc.createTextNode(patientInfo[1]));
             patient.appendChild(clump_thickness);
 
             Element uniformity_cell_size = doc.createElement("uniformity_cell_size");
-            uniformity_cell_size.appendChild(doc.createTextNode("1"));
+            uniformity_cell_size.appendChild(doc.createTextNode(patientInfo[2]));
             patient.appendChild(uniformity_cell_size);
 
             Element uniformity_cell_shape = doc.createElement("uniformity_cell_shape");
-            uniformity_cell_shape.appendChild(doc.createTextNode("1"));
+            uniformity_cell_shape.appendChild(doc.createTextNode(patientInfo[3]));
             patient.appendChild(uniformity_cell_shape);
 
             Element marginal_adhesion = doc.createElement("marginal_adhesion");
-            marginal_adhesion.appendChild(doc.createTextNode("1"));
+            marginal_adhesion.appendChild(doc.createTextNode(patientInfo[4]));
             patient.appendChild(marginal_adhesion);
             
             Element single_epithelial_cell_size = doc.createElement("single_epithelial_cell_size");
-            single_epithelial_cell_size.appendChild(doc.createTextNode("1"));
+            single_epithelial_cell_size.appendChild(doc.createTextNode(patientInfo[5]));
             patient.appendChild(single_epithelial_cell_size);
 
             Element bare_nuclei = doc.createElement("bare_nuclei");
-            bare_nuclei.appendChild(doc.createTextNode("1"));
+            bare_nuclei.appendChild(doc.createTextNode(patientInfo[6]));
             patient.appendChild(bare_nuclei);
 
             Element bland_chromatin = doc.createElement("bland_chromatin");
-            bland_chromatin.appendChild(doc.createTextNode("1"));
+            bland_chromatin.appendChild(doc.createTextNode(patientInfo[7]));
             patient.appendChild(bland_chromatin);
 
             Element normal_nucleoli = doc.createElement("normal_nucleoli");
-            normal_nucleoli.appendChild(doc.createTextNode("1"));
+            normal_nucleoli.appendChild(doc.createTextNode(patientInfo[8]));
             patient.appendChild(normal_nucleoli);
 
             Element mitoses = doc.createElement("mitoses");
-            mitoses.appendChild(doc.createTextNode("1"));
+            mitoses.appendChild(doc.createTextNode(patientInfo[9]));
             patient.appendChild(mitoses);
 
             //this is the cancer diagnosis, 2 if negative, 4 if positive
             Element _class = doc.createElement("class");
-            _class.appendChild(doc.createTextNode("1"));
+            _class.appendChild(doc.createTextNode(patientInfo[10]));
             patient.appendChild(_class);
 
             transformer = transformerFactory.newTransformer();

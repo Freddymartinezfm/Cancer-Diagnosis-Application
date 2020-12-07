@@ -12,7 +12,7 @@ public @interface BeforeEach {
 
 	
 
-	String positiveXml =  "<Dataset>\n" +
+	String[] positiveXml =  {"<Dataset>\n" +
 	"    <id>1000025</id>\n" +
 	"    <thickness>5</thickness>\n" +
 	"    <uniformity_size>1</uniformity_size>\n" +
@@ -24,9 +24,9 @@ public @interface BeforeEach {
 	"    <nucleoli>1</nucleoli>\n" +
 	"    <mitoses>1</mitoses>\n" +
 	"    <class>2</class>\t//this is what our intelligent model determines\n" +
-	"</Dataset>";
+	"</Dataset>"};
 
-	String negativeXml =  "<Dataset>\n" +
+	String[] negativeXml =  {"<Dataset>\n" +
 	"    <id>1000025</id>\n" +
 	"    <thickness>5</thickness>\n" +
 	"    <uniformity_size>1</uniformity_size>\n" +
@@ -38,7 +38,7 @@ public @interface BeforeEach {
 	"    <nucleoli>1</nucleoli>\n" +
 	"    <mitoses>1</mitoses>\n" +
 	"    <class>2</class>\t//this is what our intelligent model determines\n" +
-	"</Dataset>";
+	"</Dataset>"};
 
 
 

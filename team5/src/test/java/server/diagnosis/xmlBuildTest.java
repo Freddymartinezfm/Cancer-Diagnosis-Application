@@ -25,7 +25,7 @@ public class xmlBuildTest  {
 	@Test
 	public void testXmlParse(){
 		xmlParse xmlParse = new xmlParse();
-		xmlParse.parse();
+		//xmlParse.parse();
 		// assertNotNull(xmlParse.parse());
 
 		

@@ -3,6 +3,10 @@ package server.diagnosis.server_management;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,10 +15,7 @@ import server.diagnosis.DiagnosisImplementation;
 import server.diagnosis.StubImplementation;
 import server.diagnosis.component.xmlparser.xmlManager;
 
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+
 
 
 public class Peer extends Thread {

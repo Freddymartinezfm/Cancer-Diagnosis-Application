@@ -6,16 +6,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.net.ServerSocket;
 import java.net.Socket;
-
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Client {
 	private static final Logger logger = LogManager.getLogger();
+	private int[] diagnoses;
+	private String finalDiagnosis;
 
 	public Client() {
 		start();
@@ -27,7 +27,7 @@ public class Client {
 		// add more port numbers to peerPorts to test multiple systems
 		int[] peerPorts = { 7123 };
 		// diagnoses array size needs to match number of peerPorts
-		int[] diagnoses = new int[1];
+		diagnoses = new int[1];
 
 		int diagnosesCount = 0;
 		Socket socket1;
@@ -70,6 +70,9 @@ public class Client {
 			diagnosesCount++;
 			logger.info("Server response has been provided");
 		}
+		tallyDiagnoses();
+	}
+	public void tallyDiagnoses() {
 		int positive = 0, negative = 0;
 		for (int e : diagnoses) {
 			if (e == 2) {
@@ -77,13 +80,16 @@ public class Client {
 			} else {
 				negative++;
 			}
-			System.out.println(e);
 		}
 
 		if (positive > negative) {
-			System.out.println("No cancer");
+			finalDiagnosis = " cancer is not detected.";
 		} else {
-			System.out.println("Cancer");
+			finalDiagnosis = " cancer is detected.";
 		}
+	}
+
+	public String getFinalDiagnosis() {
+		return finalDiagnosis;
 	}
 }

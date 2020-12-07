@@ -26,6 +26,7 @@ public class DiagnosisImplementation {
 		}
 		System.out.println(total);
 		int result = total % 2;
+		if(result == 0){result = 1;}else{result = 2;}
 		result *= 2;
 		return result;
 

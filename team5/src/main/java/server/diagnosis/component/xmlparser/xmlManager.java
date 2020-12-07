@@ -1,5 +1,7 @@
 package server.diagnosis.component.xmlparser;
 
+import java.io.File;
+
 public class xmlManager {
     xmlParse parser = new xmlParse();
     xmlBuild builder = new xmlBuild();
@@ -8,8 +10,8 @@ public class xmlManager {
         builder.build(patientInfo);
     }
 
-    public void parse(){
-        parser.parse();
+    public void parse(File xmlFile){
+        parser.parse(xmlFile);
     }
 
     public String [] getInfo(){

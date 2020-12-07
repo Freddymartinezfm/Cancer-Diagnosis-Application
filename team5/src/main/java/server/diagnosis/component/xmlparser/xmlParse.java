@@ -14,14 +14,14 @@ public class xmlParse {
         factory = DocumentBuilderFactory.newInstance();
     }
 
-    public void parse() {
+    public void parse(File xmlFile) {
         try {
-            /*if(xmlFile != null){
+            if(xmlFile != null){
                 inputFile = xmlFile;
             }
             else{
                 throw new NullPointerException();
-            }*/
+            }
             builder = factory.newDocumentBuilder();
 
             Document doc = builder.parse(inputFile);

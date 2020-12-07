@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import server.diagnosis.Diagnosis;
 import server.diagnosis.DiagnosisImplementation;
 import server.diagnosis.StubImplementation;
+import server.diagnosis.component.xmlparser.xmlManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -54,21 +55,37 @@ public class Peer extends Thread {
 					System.out.println(s);
 					output.println("response contains:  " + s +  "diagnosis result");
 
+          //create new xmlfile at location to parse
+          File outputFile = new File("patient_info2.xml");
+          OutputStream out = new FileOutputStream(outputFile);
+          InputStream in = socket.getInputStream();
+          byte[] bytes = new byte[2*1024];
+          int count;
+          while ((count = in.read(bytes)) > 0) {
+            out.write(bytes, 0, count);
+          }
+
+          xmlManager manager = new xmlManager();
+          manager.parse(outputFile);
+
+          DiagnosisImplementation impl = new StubImplementation();
+          Diagnosis diag = new Diagnosis(impl);
+          //diag.runDiagnosis(manager.getInfo());
+          System.out.println(diag.runDiagnosis(manager.getInfo()));
+
 				} else { // remote connection
 					System.out.println("remote ");
-					//create new xmlfile at location to parse
 					System.out.println("Remote connection ");
-					logger.info("remote");
-					File outputFile = new File("patient_info2.xml");
-					OutputStream out = new FileOutputStream(outputFile);
-					// String s = input.readLine();
-					InputStream in = socket.getInputStream();
-					byte[] bytes = new byte[2*1024];
-					int count;
-					
-					while ((count = in.read(bytes)) > 0) {
-						out.write(bytes, 0, count);
-					}
+						String s = in.readLine();
+						logger.info("remote connection: " +  s);
+						out.println("response " + " diag result ");
+						System.out.println("read " + s + " from connection ");
+						// Diagnosis implementation goes below here
+						// loop indefinately reading the input from the connection.
+						// if (s.equals("exit")){
+						// 	System.out.println("Client requested to close server: ");
+						// 	break;
+						// }
 				}
 				// Diagnosis implementation goes below here
 				// either way a diagnosis will have to be completed, and can reside outside the loop

@@ -23,9 +23,9 @@ public class Peer extends Thread {
 	private static final Logger logger = LogManager.getLogger(Peer.class);
 
 	public Peer(Socket socket) {
-		System.out.println("Client connected:" + socket.getChannel());
-		System.out.println("Client socket port:  " + socket.getLocalPort());
-		System.out.println("Client address: " + socket.getInetAddress());
+		logger.info("Client connected:" + socket.getChannel());
+		logger.info("Client socket port:  " + socket.getLocalPort());
+		logger.info("Client address: " + socket.getInetAddress());
 		this.socket = socket;
 	}
 
@@ -33,19 +33,18 @@ public class Peer extends Thread {
 	public void run() {
 		try {
 			// create new xmlfile at location to parse
-			System.out.println("File transfer start");
-			
+			logger.info("New request received from client");
 			File outputFile = new File("patient_info2.xml");
 			InputStream in = socket.getInputStream();
 			OutputStream out = new FileOutputStream(outputFile);
 			byte[] bytes = new byte[2 * 1024];
 			int count;
+			logger.info("File transfer started.");
 			while ((count = in.read(bytes)) > 0) {
 				out.write(bytes, 0, count);
 			}
 			out.close();
-			//in.close; //closing this closes the socket
-			System.out.println("File recieved");
+			logger.info("File recieved.");
 
 			xmlManager manager = new xmlManager();
 			manager.parse(outputFile);
@@ -57,18 +56,20 @@ public class Peer extends Thread {
 			Socket socket1 = new Socket("localhost", 5000);
 			OutputStream output = new DataOutputStream(socket1.getOutputStream());
 			output.write(diagnosis);
+			String d = String.valueOf(diagnosis);
+			logger.info("Diagnosis response is " + d + ".");
 			socket1.close();
 			//end
 
 		} catch (IOException e) {
-			System.out.println("Oops no client connnection: " + e.getMessage());
+			logger.warn("No client connnection: " + e.getMessage());
 
 		} finally {
 			try {
 				socket.close();
 			} catch (IOException e) {
 				// a connection has been closed
-				System.out.println("connection closed: " + e.getMessage());
+				logger.info("Connection closed: " + e.getMessage());
 
 			}
 		}

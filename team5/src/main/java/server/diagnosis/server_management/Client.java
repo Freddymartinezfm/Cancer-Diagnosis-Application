@@ -1,21 +1,15 @@
 package server.diagnosis.server_management;
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
+
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Scanner;
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,7 +18,6 @@ public class Client {
 	private static final Logger logger = LogManager.getLogger();
 
 	public Client() {
-		logger.info("Client stub log");
 		start();
 	}
 
@@ -40,10 +33,12 @@ public class Client {
 		Socket socket1;
 
 		for (int p : peerPorts) {
-			System.out.println("start peerports");
+
+			logger.info("Connection request sent to server.");
+			
 			try (Socket socket = new Socket(hostName, p)) {
-				System.out.println("socket started");
-				System.out.println(socket.toString());
+				
+				logger.info("Client socket started: " + socket.toString());
 				// start of convert file to byte data
 				File xmlFile = new File("patient_info.xml");
 				InputStream inFile = new FileInputStream(xmlFile);
@@ -53,7 +48,7 @@ public class Client {
 				while ((count = inFile.read(bytes)) > 0) {
 					outFile.write(bytes, 0, count);
 				}
-				System.out.println("File sent");
+				logger.info("File sent from client to server");
 				inFile.close();
 				outFile.close();
 				// end
@@ -70,10 +65,10 @@ public class Client {
 				//end
 
 			} catch (IOException e) {
-				System.out.println("uh oh " + e.getMessage());
-				System.out.println();
+				logger.error("Exception: " + e.getMessage());
 			}
 			diagnosesCount++;
+			logger.info("Server response has been provided");
 		}
 		int positive = 0, negative = 0;
 		for (int e : diagnoses) {

@@ -23,7 +23,7 @@ public class PeerManagement {
 		
 			while(true){
 				Socket socket = serverSocket.accept(); // blocked until a connection is made
-				
+				logger.info("New server connection request received from client.");
 				server = new Peer(socket);
 			
 				server.start();

@@ -16,10 +16,8 @@ import server.diagnosis.view.GUIStarter;
 
 public class Main {
     public static void main(String[] args) {
-        // LoggingManager.logger.info("info");
         new GUIStarter();
         new PeerManagement();
-        // new ServerStarter();
     }
 }
 

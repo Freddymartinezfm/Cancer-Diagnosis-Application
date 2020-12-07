@@ -64,12 +64,10 @@ public class GUIActionListener implements ActionListener {
             output.append(" Connecting for diagnosis...\n");
             // info should be verified
 
-            // remove line below (for testing purposes)
-            //valid = true;
             
-            // if (valid) new Client();
-            logger.info("response goes here | directed to output\n");
-            output.append("response goes here | directed to output");
+            if (valid) new Client();
+            //logger.info("response goes here | directed to output\n");
+            //output.append("response goes here | directed to output");
             
 
             panel.getCanvas().repaint();

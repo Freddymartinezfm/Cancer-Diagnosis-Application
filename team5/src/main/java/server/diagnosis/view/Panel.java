@@ -38,7 +38,7 @@ public class Panel  {
     // <class>2</class>
     private static final Logger logger = LogManager.getLogger(Panel.class);
     private JFrame window;
-    JLabel medPic = new JLabel(new ImageIcon("team5\\resources\\images\\med.jpg"));
+    JLabel medPic = new JLabel(new ImageIcon("Cancer-Diagnosis-Application\\team5\\resources\\images\\med.jpg"));
 
     private JButton diagnoseButton = new JButton("Diagnose");
     private JButton disconnectButton = new JButton("End Session");

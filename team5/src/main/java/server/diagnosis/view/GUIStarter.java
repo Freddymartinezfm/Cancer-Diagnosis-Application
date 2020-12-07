@@ -20,7 +20,7 @@ public class GUIStarter {
 	private void start() {
 
         JFrame window = new JFrame();
-        ImageIcon ribbon = new ImageIcon("Cancer-Diagnosis-Application/team5/src/main/java/server/diagnosis/view/ribbon.jpg");
+        ImageIcon ribbon = new ImageIcon("Cancer-Diagnosis-Application\\team5\\resources\\images\\ribbon.jpg");
         
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocation(400, 100);

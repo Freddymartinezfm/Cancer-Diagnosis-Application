@@ -68,7 +68,8 @@ public class GUIActionListener implements ActionListener {
             //valid = true;
             
             // if (valid) new Client();
-            logger.info("response goes here");
+            logger.info("response goes here | directed to output\n");
+            output.append("response goes here | directed to output");
             
 
             panel.getCanvas().repaint();

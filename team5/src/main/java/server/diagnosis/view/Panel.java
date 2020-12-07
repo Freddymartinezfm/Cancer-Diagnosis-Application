@@ -36,7 +36,7 @@ public class Panel  {
     // <nucleoli>1</nucleoli>
     // <mitoses>1</mitoses>
     // <class>2</class>
-
+    private static final Logger logger = LogManager.getLogger(Panel.class);
     private JFrame window;
     JLabel medPic = new JLabel(new ImageIcon("resources\\images\\med.jpg"));
 
@@ -184,9 +184,9 @@ public class Panel  {
 
         //adds gui pic
         if (medPic == null){
-            System.err.println("picutre error");
+            logger.error("Resource not loaded successfully!", medPic);
         } else {
-            System.err.println("picture loaded successfully");
+            logger.info("Resource loaded successfully!", medPic);
             westPanel.add(BorderLayout.CENTER, medPic);
             medPic.setBorder(new LineBorder(Color.lightGray, 1));
 

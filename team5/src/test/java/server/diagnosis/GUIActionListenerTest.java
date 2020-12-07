@@ -1,13 +1,13 @@
 package server.diagnosis;
 
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import javax.swing.JFrame;
 import org.junit.Test;
 
 import JUnit4.jupiter.api.BeforeEach;
 import server.diagnosis.controller.GUIActionListener;
-import server.diagnosis.view.GUIStarter;
 import server.diagnosis.view.Panel;
 
 public class GUIActionListenerTest {
@@ -22,6 +22,9 @@ public class GUIActionListenerTest {
 		
 		guiInstance.fillTextFieldOne();
 		guiInstance.saveForm();
+		assertNotNull(patientTest[1]);
+		assertEquals("The array should be full of ones", "1", patientTest[0]);
+
 	}
 
 

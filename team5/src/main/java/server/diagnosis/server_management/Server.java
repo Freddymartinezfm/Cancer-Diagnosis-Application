@@ -24,6 +24,9 @@ public class Server {
 		while (true) {
 			try {
 				Socket clientSocket = serverSocket.accept();
+				if (clientSocket == null){
+					logger.info("Client Socket error");
+				}
 				logger.info("Client Socket accepted");
 				ClientConnect cc = new ClientConnect(clientSocket);
 				new Thread(cc).start();

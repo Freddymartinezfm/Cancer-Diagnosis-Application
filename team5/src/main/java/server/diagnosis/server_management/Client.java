@@ -30,15 +30,12 @@ public class Client {
 
 	public void start() {
 		String hostName = "127.0.0.1";
-		Socket clientSocket;
-		PrintWriter out;
-		BufferedReader in;
-		InputStreamReader isr;
+
 		// add more port numbers to peerPorts to test multiple systems
 		int[] peerPorts = { 7123 };
 		// diagnoses array size needs to match number of peerPorts
 		int[] diagnoses = new int[1];
-		String s;
+
 		int diagnosesCount = 0;
 		Socket socket1;
 

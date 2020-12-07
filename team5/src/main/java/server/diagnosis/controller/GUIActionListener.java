@@ -12,6 +12,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.swing.*;
 
 import server.diagnosis.component.UserTextAreaAppender;
+import server.diagnosis.component.xmlparser.xmlManager;
 import server.diagnosis.server_management.Client;
 import server.diagnosis.view.Panel;
 
@@ -33,6 +34,7 @@ public class GUIActionListener implements ActionListener {
     private String[] patientInfoPrint = new String[11]; // this is the array to be used for the textArea output
     private JTextField[] textFieldAr = new JTextField[11];
     private boolean valid;
+    private xmlManager xmlManager;
 
     public GUIActionListener(Panel panel) {
         logger.info("stub log");
@@ -51,6 +53,10 @@ public class GUIActionListener implements ActionListener {
         if (button == panel.getValidButton()) {
             saveForm();
             valid = validate();
+            if(valid){
+                xmlManager = new xmlManager();
+                xmlManager.build(patientInfo); 
+            }
             panel.getCanvas().repaint();
 
         } else if (button == panel.getDiagnoseButton()) {
@@ -59,7 +65,7 @@ public class GUIActionListener implements ActionListener {
             // info should be verified
 
             // remove line below (for testing purposes)
-            valid = true;
+            //valid = true;
             
             if (valid) new Client();
 

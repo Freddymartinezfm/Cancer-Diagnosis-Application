@@ -18,7 +18,7 @@ public class xmlBuild {
         transformerFactory = TransformerFactory.newInstance();
     }
 
-    public void build(){
+    public void build(String[] patientInfo){
         //patientInfo not currently used
         try{
             builder = factory.newDocumentBuilder();
@@ -34,7 +34,7 @@ public class xmlBuild {
             //practice setting patient id
             //id will come from patient model
             Attr id = doc.createAttribute("id");
-            id.setValue("1234");   //temp test right now
+            id.setValue(patientInfo[0]);   //temp test right now
             patient.setAttributeNode(id);
 
             //start creating subelements

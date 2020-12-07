@@ -45,8 +45,8 @@ public class Peer extends Thread {
 			PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 			InetAddress ip = socket.getInetAddress();
 			
+			String s = " ";
 			while (true) { 
-				String s = " ";
 				if (ip.isLoopbackAddress()){  // local connection
 					System.out.println("Local connection ");
 					output.println("Local connection ");
@@ -55,39 +55,36 @@ public class Peer extends Thread {
 					System.out.println(s);
 					output.println("response contains:  " + s +  "diagnosis result");
 
-          //create new xmlfile at location to parse
-          File outputFile = new File("patient_info2.xml");
-          OutputStream out = new FileOutputStream(outputFile);
-          InputStream in = socket.getInputStream();
-          byte[] bytes = new byte[2*1024];
-          int count;
-          while ((count = in.read(bytes)) > 0) {
-            out.write(bytes, 0, count);
-          }
+					//create new xmlfile at location to parse
+					File outputFile = new File("patient_info2.xml");
+					OutputStream out = new FileOutputStream(outputFile);
+					InputStream in = socket.getInputStream();
+					byte[] bytes = new byte[2*1024];
+					int count;
+					while ((count = in.read(bytes)) > 0) {
+						out.write(bytes, 0, count);
+					}
 
-          xmlManager manager = new xmlManager();
-          manager.parse(outputFile);
+					xmlManager manager = new xmlManager();
+					manager.parse(outputFile);
 
-          DiagnosisImplementation impl = new StubImplementation();
-          Diagnosis diag = new Diagnosis(impl);
-          //diag.runDiagnosis(manager.getInfo());
-          System.out.println(diag.runDiagnosis(manager.getInfo()));
+					DiagnosisImplementation impl = new StubImplementation();
+					Diagnosis diag = new Diagnosis(impl);
+					//diag.runDiagnosis(manager.getInfo());
+					System.out.println(diag.runDiagnosis(manager.getInfo()));
 
 				} else { // remote connection
 					System.out.println("remote ");
 					System.out.println("Remote connection ");
-						String s = in.readLine();
-						logger.info("remote connection: " +  s);
-						out.println("response " + " diag result ");
-						System.out.println("read " + s + " from connection ");
-						// Diagnosis implementation goes below here
-						// loop indefinately reading the input from the connection.
-						// if (s.equals("exit")){
-						// 	System.out.println("Client requested to close server: ");
-						// 	break;
-						// }
+					s = input.readLine();
+					logger.info("remote connection: " +  s);
+					output.println("response " + " diag result ");
+					System.out.println("read " + s + " from connection ");
+					
 				}
-				// Diagnosis implementation goes below here
+
+
+				// Diagnosis implementation goes below here, outside of if else statement 
 				// either way a diagnosis will have to be completed, and can reside outside the loop
 				// loop indefinately reading the input from the connection.
 				// if (s.equals("exit")){

@@ -24,7 +24,7 @@ public class PeerManagement {
 	public void start(){
 
 		
-		try (ServerSocket serverSocket = new ServerSocket(5001)){ // try with resources
+		try (ServerSocket serverSocket = new ServerSocket(7123)){ // try with resources
 			logger.info("System is ready to serve requests.");
 		
 			while(true){
@@ -33,8 +33,9 @@ public class PeerManagement {
 				server = new Peer(socket);
 			
 				server.start();
+				
 			}
-		} catch (IOException e){
+		} catch (IOException e) {
 			logger.error("Server Exception " + e.getMessage());
 		}
 	}

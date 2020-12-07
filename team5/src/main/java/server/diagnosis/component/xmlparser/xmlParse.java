@@ -16,7 +16,12 @@ public class xmlParse {
 
     public void parse() {
         try {
-            inputFile = new File("patient_info.xml");
+            /*if(xmlFile != null){
+                inputFile = xmlFile;
+            }
+            else{
+                throw new NullPointerException();
+            }*/
             builder = factory.newDocumentBuilder();
 
             Document doc = builder.parse(inputFile);

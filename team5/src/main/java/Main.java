@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import server.diagnosis.component.LoggingManager;
 import server.diagnosis.component.xmlparser.xmlManager;
+import server.diagnosis.server_management.PeerManagement;
 import server.diagnosis.server_management.ServerStarter;
 import server.diagnosis.view.GUIStarter;
 //https://github.com/Freddymartinezfm/Cancer-Diagnosis-Application.git
@@ -19,11 +20,7 @@ public class Main {
         // LoggingManager.logger.info("info");
          new GUIStarter();
          
-         xmlManager xml = new xmlManager();
-         xml.build();
-         xml.parse(); //xml.getInfo() to get array
-         
-         new ServerStarter();
-
+        // new ServerStarter();
+        new PeerManagement();
     }
 }

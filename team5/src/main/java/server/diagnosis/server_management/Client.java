@@ -1,10 +1,16 @@
 package server.diagnosis.server_management;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,34 +33,37 @@ public class Client {
 		int[] peerPorts = {7123};
 
 		for (int p: peerPorts) {
-			try {
-				clientSocket = new Socket(hostName, p);
-				if (clientSocket == null) {
-					logger.info("Client Socket error");
+			try(Socket socket = new Socket("localhost", p)){
+				BufferedReader echoes = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				PrintWriter stringToEcho = new PrintWriter(socket.getOutputStream(), true);
+				// now get info from user or oher server
+				Scanner sc = new Scanner(System.in);
+				String echoString; // object to send back to server
 
+				//start of convert file to byte data
+				File xmlFile = new File("patient_info.xml");
+				InputStream inFile = new FileInputStream(xmlFile);
+				OutputStream outFile = socket.getOutputStream();
+				int count;
+				byte[] bytes = new byte[2*1024];
+				while ((count = inFile.read(bytes)) > 0) {
+					outFile.write(bytes, 0, count);
 				}
-				logger.info("Client Socket connected to Server Socket");
-				out = new PrintWriter(clientSocket.getOutputStream(), true);
-				isr = new InputStreamReader(clientSocket.getInputStream());
-				in = new BufferedReader(isr);
-	
-				// code for sending server patient info below
-				out.println("Team 5 start");
-				logger.info("Client Sent initial message");
-				String s = in.readLine();
-				logger.info(s);
-	
-	
-	
-	
-	
-				in.close();
-				isr.close();
-				out.close();
-				clientSocket.close();
-	
-			} catch (IOException e) {
-				System.exit(1);
+				inFile.close();
+				//end
+
+				String response;
+				/*do {
+					System.out.println("enter data to be echoed");
+					echoString = sc.nextLine();
+					stringToEcho.println(echoString); //originally echoString
+					if (!echoString.equals("exit")) {
+						response = echoes.readLine();
+						System.out.println(response + " other data to be be sent back");
+					}
+				} while (!echoString.equals("exit"));*/
+			} catch(IOException e){
+				System.out.println("uh oh" + e.getMessage());
 			}
 		}
 		

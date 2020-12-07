@@ -17,13 +17,18 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Peer extends Thread {
+	private static final Logger logger = LogManager.getLogger(Peer.class);
 
 	private Socket socket;
 
 	public Peer (Socket socket){
-		System.out.println("Client socket port:  " +  socket.getLocalPort());
-		System.out.println("Client address: " + socket.getInetAddress());
+		logger.info("Client socket port:  " +  socket.getLocalPort());
+		logger.info("Client address: " + socket.getInetAddress());
 		this.socket = socket;
 	}
 
@@ -37,8 +42,10 @@ public class Peer extends Thread {
 
 			while (true){
 				echoString = input.readLine();
-				System.out.println(echoString);
+				logger.info(echoString);
+				logger.info("response contains:  " + echoString +  "diagnosis result");
 				output.println("response contains:  " + echoString +  "diagnosis result");
+				
 
 
 				// diagnosis
@@ -47,7 +54,7 @@ public class Peer extends Thread {
 				// System.out.println(diag);
 				// socket.setSoTimeout(5000);
 				if (echoString.equals("exit")){
-					System.out.println("Client requested to close server: ");
+					logger.info("Client requested to close server: ");
 					break;
 				}
 
@@ -81,13 +88,13 @@ public class Peer extends Thread {
 			}
 
 		} catch (IOException e){
-			System.out.println("Oops: " +e.getMessage());
+			logger.info("Oops: " +e.getMessage());
 		} finally {
 			try {
 				socket.close();
 			} catch (IOException e){
 				// a connection has been closed
-				System.out.println("connection closed: "  + e.getMessage());
+				logger.info("Oops: " +e.getMessage());
 
 			}
 		}

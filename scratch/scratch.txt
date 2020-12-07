@@ -1,1 +1,16 @@
 
+/*while (true){
+	String echoString = input.readLine();
+	// diagnosis
+	System.out.println(echoString);
+	DiagnosisImplementation impl = new StubImplementation();
+	Diagnosis diag = new Diagnosis(impl);
+	System.out.println(diag);
+	socket.setSoTimeout(5000);
+	output.println("Received " + diag.toString() + " from client."); // back to client
+	if (echoString.equals("exit")){
+		System.out.println("Client requested to close server: ");
+		break;
+	}
+
+}*/

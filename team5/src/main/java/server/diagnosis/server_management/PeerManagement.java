@@ -19,11 +19,11 @@ public class PeerManagement {
 
 		
 		try (ServerSocket serverSocket = new ServerSocket(7123)){ // try with resources
-			logger.info("System is ready to serve requests.");
+			logger.info("System is ready to serve requests.\n");
 		
 			while(true){
 				Socket socket = serverSocket.accept(); // blocked until a connection is made
-				logger.info("New server connection request received from client.");
+				logger.info("New server connection request received from client.\n");
 				server = new Peer(socket);
 			
 				server.start();

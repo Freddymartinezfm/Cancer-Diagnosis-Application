@@ -69,7 +69,7 @@ public class GUIActionListener implements ActionListener {
                 client = new Client();
             }
             String diagnosis = client.getFinalDiagnosis();
-            output.append(" The consensus diagnosis is that" + diagnosis);
+            output.append("\n The consensus diagnosis is that" + diagnosis + "\n");
             panel.getCanvas().repaint();
             
         } else if (button == panel.getLoginButton()) {

@@ -1,6 +1,9 @@
 package server.diagnosis;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
+import java.io.File;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,17 +19,23 @@ public class xmlBuildTest  {
 
 	@Test
 	public void testXmlBuild(){
+		String [] array = {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"};
 		xmlBuild xmlBuild = new xmlBuild();
-		//xmlBuild.build();
-		// assertNotNull(xmlBuild.build());
+		xmlBuild.build(array);
+		File xmlFile = new File("patient_info.xml");
+		assertNotNull(xmlFile);
 		
 	}
 
 	@Test
 	public void testXmlParse(){
+		String [] array = {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"};
+		xmlBuild xmlBuild = new xmlBuild();
+		xmlBuild.build(array);
+		File xmlFile = new File("patient_info.xml");
 		xmlParse xmlParse = new xmlParse();
-		//xmlParse.parse();
-		// assertNotNull(xmlParse.parse());
+		xmlParse.parse(xmlFile);
+		assertEquals("1", xmlParse.getPatientInfo()[0]);
 
 		
 	}

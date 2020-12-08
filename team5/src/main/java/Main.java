@@ -11,8 +11,7 @@ Copywrite UCO Software Engineering I Group 5
 //import server.diagnosis.component.xmlparser.xmlManager;
 import server.diagnosis.server_management.PeerManagement;
 import server.diagnosis.view.GUIStarter;
-//https://github.com/Freddymartinezfm/Cancer-Diagnosis-Application.git
-//git@github.com:Freddymartinezfm/Cancer-Diagnosis-Application.git
+
 
 public class Main {
     public static void main(String[] args) {

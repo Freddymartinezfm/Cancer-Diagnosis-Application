@@ -68,7 +68,7 @@ public class Client {
 				logger.error("Exception: " + e.getMessage());
 			}
 			diagnosesCount++;
-			logger.info("Server response has been provided");
+			logger.info("Server response has been provided\n");
 		}
 		tallyDiagnoses();
 	}

@@ -12,10 +12,13 @@ import java.net.Socket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import server.diagnosis.view.Panel;
+
 public class Client {
 	private static final Logger logger = LogManager.getLogger();
 	private int[] diagnoses;
 	private String finalDiagnosis;
+	private Panel panel;
 
 	public Client() {
 		start();
@@ -66,6 +69,8 @@ public class Client {
 
 			} catch (IOException e) {
 				logger.error("Exception: " + e.getMessage());
+				panel.getStuff().append("There was an error in the system.");
+
 			}
 			diagnosesCount++;
 			logger.info("Server response has been provided\n");

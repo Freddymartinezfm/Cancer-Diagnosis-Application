@@ -40,9 +40,6 @@ public class GUIActionListener implements ActionListener {
     public GUIActionListener(Panel panel) {
         this.panel = panel;
         output = panel.getStuff();
-        // info should be validated here, or in the xml code.
-        // UserTextAreaAppender appender = new UserTextAreaAppender(this.output);
-        // org.apache.log4j.LogManager.getRootLogger().addAppender(appender);
     }
 
 
@@ -95,6 +92,7 @@ public class GUIActionListener implements ActionListener {
             clearTextField();
             output.append(" Cleared patient info\n");
             panel.getCanvas().repaint();
+            
         } else if (button == panel.getClearTextAreaButton()) {          
             output.selectAll();
             output.replaceSelection(null);

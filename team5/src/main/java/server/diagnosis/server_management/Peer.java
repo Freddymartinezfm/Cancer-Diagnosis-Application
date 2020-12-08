@@ -22,6 +22,7 @@ public class Peer extends Thread {
 
 	private Socket socket;
 	private static final Logger logger = LogManager.getLogger(Peer.class);
+	private Panel panel;
 
 	public Peer(Socket socket) {
 		logger.info("Client connected:" + socket.getChannel());
@@ -64,6 +65,8 @@ public class Peer extends Thread {
 
 		} catch (IOException e) {
 			logger.warn("No client connnection: " + e.getMessage());
+            panel.getStuff().append("Error with connection");
+
 
 		} finally {
 			try {

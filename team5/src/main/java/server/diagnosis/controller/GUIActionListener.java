@@ -135,7 +135,7 @@ public class GUIActionListener implements ActionListener {
         }
     }
 
-    private void saveForm() {
+    public void saveForm() {
         patientInfo[0] = panel.getPatientIDText().getText();
         patientInfo[1] = panel.getClumpText().getText();
         patientInfo[2] = panel.getCellText().getText();
@@ -186,7 +186,7 @@ public class GUIActionListener implements ActionListener {
         }
     }
 
-    private void fillTextFieldOne() {
+    public void fillTextFieldOne() {
         textFieldAr[0] = panel.getPatientIDText();
         textFieldAr[0].setText("1");
         patientInfo[0] ="1";

@@ -25,20 +25,9 @@ import server.diagnosis.controller.GUIActionListener;
 
 public class Panel  {
 
-    // <id>1000025</id>
-    // <thickness>5</thickness>
-    // <uniformity_size>1</uniformity_size>
-    // <uniformity_shape>1</uniformity_shape>
-    // <adhesion>1</adhesion>
-    // <epithelial_size>2</epithelial_size>
-    // <bare_nuclei>1</bare_nuclei>
-    // <chromatin>3</chromatin>
-    // <nucleoli>1</nucleoli>
-    // <mitoses>1</mitoses>
-    // <class>2</class>
     private static final Logger logger = LogManager.getLogger(Panel.class);
     private JFrame window;
-    JLabel medPic = new JLabel(new ImageIcon("Cancer-Diagnosis-Application\\team5\\resources\\images\\med.jpg"));
+    JLabel medPic = new JLabel(new ImageIcon("team5\\src\\main\\java\\med.jpg"));
 
     private JButton diagnoseButton = new JButton("Diagnose");
     private JButton disconnectButton = new JButton("End Session");

@@ -7,8 +7,11 @@ import java.net.Socket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import server.diagnosis.view.Panel;
+
 public class PeerManagement {
 	private static final Logger logger = LogManager.getLogger();
+	private Panel panel;
 
 	private Peer server;
 	public PeerManagement(){
@@ -31,6 +34,8 @@ public class PeerManagement {
 			}
 		} catch (IOException e) {
 			logger.error("Server Exception " + e.getMessage());
+            panel.getStuff().append("Error with the server");
+
 		}
 	}
 }

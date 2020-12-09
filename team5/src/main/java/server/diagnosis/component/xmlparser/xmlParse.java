@@ -4,11 +4,14 @@ import java.io.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
+import server.diagnosis.view.Panel;
+
 public class xmlParse {
     private DocumentBuilderFactory factory;
     private File inputFile;
     private DocumentBuilder builder;
     private String[] patientInfo = new String[11];
+    private Panel panel;
 
     public xmlParse() {
         factory = DocumentBuilderFactory.newInstance();
@@ -52,6 +55,8 @@ public class xmlParse {
 
         } catch (Exception e) {
             System.out.println("Error in parse");
+            panel.getStuff().append("Error in parse");
+
         }
     }
 

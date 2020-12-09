@@ -1,4 +1,5 @@
 package server.diagnosis.component.xmlparser;
+
 import java.io.*;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
@@ -7,11 +8,14 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.*;
 
+import server.diagnosis.view.Panel;
+
 public class xmlBuild {
     private DocumentBuilder builder;
     private DocumentBuilderFactory factory;
     private TransformerFactory transformerFactory;
     private Transformer transformer;
+    private Panel panel;
 
     public xmlBuild(){
         factory = DocumentBuilderFactory.newInstance();
@@ -88,6 +92,8 @@ public class xmlBuild {
 
         }catch(Exception e){
             System.out.println("Error in build," + e.toString());
+            panel.getStuff().append("Error in build");
+
         }
     }
 }

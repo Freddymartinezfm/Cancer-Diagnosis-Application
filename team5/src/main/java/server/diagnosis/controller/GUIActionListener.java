@@ -116,7 +116,7 @@ public class GUIActionListener implements ActionListener {
                     }
                 }
                 int temp = Integer.parseInt(tempString);
-                if (temp >= 0 && temp < 11 ) { 
+                if (temp > 0 && temp < 11 ) { 
                  count ++;
                 }
             }            

@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import server.diagnosis.DiagnosisImplementation;
 import server.diagnosis.StubImplementation;
 import server.diagnosis.component.xmlparser.xmlManager;
+import server.diagnosis.view.Panel;
 
 
 

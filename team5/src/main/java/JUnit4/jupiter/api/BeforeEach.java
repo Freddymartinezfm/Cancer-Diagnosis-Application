@@ -1,11 +1,18 @@
 package JUnit4.jupiter.api;
 
+import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import server.diagnosis.controller.GUIActionListener;
 import server.diagnosis.view.GUIStarter;
 import server.diagnosis.view.Panel;
 
 public @interface BeforeEach {
+
+	JFrame window1 = new JFrame();
+	Panel panel = new Panel(window1);
+	GUIActionListener guiInstance = new GUIActionListener(panel);
+	String[] patientTest = guiInstance.getPatientInfo();
 
 
 	

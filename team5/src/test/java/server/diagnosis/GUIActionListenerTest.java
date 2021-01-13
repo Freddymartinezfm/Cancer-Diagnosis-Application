@@ -7,23 +7,27 @@ import javax.swing.JFrame;
 import org.junit.Test;
 
 import JUnit4.jupiter.api.BeforeEach;
+import junit.framework.TestCase;
 import server.diagnosis.controller.GUIActionListener;
 import server.diagnosis.view.Panel;
 
-public class GUIActionListenerTest {
+public class GUIActionListenerTest extends TestCase {
+
+	public GUIActionListenerTest(String name){
+		super(name);
+	}
+
+	// guiInstance moved to BeforeEach class to initiliaze only once
 	
-	JFrame window1 = new JFrame();
-	Panel panel = new Panel(window1);
-	GUIActionListener guiInstance = new GUIActionListener(panel);
-	String[] patientTest = guiInstance.getPatientInfo();;
+	
 
 	@Test
 	public void testSaveForm() {
 		
-		guiInstance.fillTextFieldOne();
-		guiInstance.saveForm();
-		assertNotNull(patientTest[1]);
-		assertEquals("The array should be full of ones", "1", patientTest[0]);
+		BeforeEach.guiInstance.fillTextFieldOne();
+		BeforeEach.guiInstance.saveForm();
+		assertNotNull(BeforeEach.patientTest[1]);
+		assertEquals("The array should be full of ones", "1", BeforeEach.patientTest[1]);
 
 	}
 

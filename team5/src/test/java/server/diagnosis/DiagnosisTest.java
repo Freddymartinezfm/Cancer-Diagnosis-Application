@@ -2,32 +2,52 @@ package server.diagnosis;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.sound.sampled.SourceDataLine;
+
 import org.junit.Test;
 
 import JUnit4.jupiter.api.BeforeEach;
+import junit.framework.TestCase;
 
-public class DiagnosisTest {
-	// @Test
-	// public void testPositiveDiagnosis(){
-	// 	DiagnosisImplementation impl = new StubImplementation();
-	// 	Diagnosis diag = new Diagnosis(impl);
-	// 	int result =  diag.runDiagnosis(BeforeEach.negativeXml);
+public class DiagnosisTest extends TestCase {
+	@Test
+	public void testPositiveDiagnosis(){
+		DiagnosisImplementation impl = new StubImplementation();
+		Diagnosis diag = new Diagnosis(impl);
+		int result =  diag.runDiagnosis(BeforeEach.xml);
+		assertNotSame(4, result);
+	} 
 
-	// 	assertEquals(4, result);
-
-
-	// } 
+	public DiagnosisTest(String name){
+		super(name);
+	}
 
 	@Test
 	public void testNegativeDiagnosis(){
+
+		// set up test
 		DiagnosisImplementation impl = new StubImplementation();
 		Diagnosis diag = new Diagnosis(impl);
-		int result =  diag.runDiagnosis(BeforeEach.positiveXml);
 
+		// run test
+		int result =  diag.runDiagnosis(BeforeEach.xml);
+		System.out.println(result);
+
+
+		// verify test
 		assertEquals("Result of a negative diagnosis to show not cancer ", 2, result);
 
 
 
-	} 
+	}
+
+	@Override
+	protected void runTest() throws Throwable {
+		// TODO Auto-generated method stub
+		testNegativeDiagnosis();
+		testPositiveDiagnosis();
+		
+		// super.runTest();
+	}
 	
 }

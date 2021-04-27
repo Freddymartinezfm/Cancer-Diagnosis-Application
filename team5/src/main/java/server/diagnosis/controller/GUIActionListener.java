@@ -7,21 +7,18 @@ package server.diagnosis.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Integer;
-import javax.sound.sampled.SourceDataLine;
-import javax.swing.*;
 
-import server.diagnosis.component.UserTextAreaAppender;
-import server.diagnosis.component.xmlparser.xmlManager;
-import server.diagnosis.server_management.Client;
-import server.diagnosis.view.Panel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.appender.OutputStreamAppender;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.message.Message;
+
+import server.diagnosis.component.xmlparser.xmlManager;
+import server.diagnosis.server_management.Client;
+import server.diagnosis.view.Panel;
 
 
 
@@ -45,6 +42,7 @@ public class GUIActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
+        String diagnosis = " ";
         
         JButton button = (JButton) e.getSource();
         if (button == panel.getValidButton()) {
@@ -65,13 +63,25 @@ public class GUIActionListener implements ActionListener {
             if (valid) {
                 client = new Client();
             }
-            String diagnosis = client.getFinalDiagnosis();
+
+            diagnosis = client.getFinalDiagnosis();
             output.append("\n The consensus diagnosis is that" + diagnosis + "\n");
+            if (button != null){
+                JOptionPane.showMessageDialog(panel.getWindow(),
+                "Diagnosis is: " + diagnosis);
+            }
             panel.getCanvas().repaint();
             
         } else if (button == panel.getLoginButton()) {
+            System.out.println("login pressed. ");
             //dummy prototype for logging in
             output.append(" Logging in...\n");
+            String userName = panel.getLogin().getText().strip();
+            String password = panel.getPassword().getText().strip();
+           
+            // TODO send to data base or store in seperate class 
+            userLogin(userName, password);
+
 
             panel.getCanvas().repaint();
 
@@ -99,6 +109,19 @@ public class GUIActionListener implements ActionListener {
             panel.getCanvas().repaint();
         }
     }
+
+    public boolean userLogin(String userName, String password){
+
+        boolean result = ((userName != null) ? true : false) &&  (password != null) ? true : false;
+        JOptionPane.showMessageDialog(panel.getWindow(),
+        "username: " + userName + "\n" +
+        "password: " + password);
+        
+        return result;
+
+    }
+
+    
 
     private boolean validate() {
         int count = 0;

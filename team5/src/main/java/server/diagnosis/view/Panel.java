@@ -48,16 +48,25 @@ public class Panel  {
     JTextField normText = new JTextField();
     JTextField mitText = new JTextField();
     JTextField classText = new JTextField();
+    JTextField login = new JTextField();
+    JTextField password = new JTextField();
 
     private Canvas canvas;
     private JTextArea stuff;
+    JPanel northPanel = new JPanel();
+    JPanel southPanel = new JPanel();
+    JPanel westPanel = new JPanel();
+    JPanel eastPanel = new JPanel();
 
     public Panel(JFrame window) {
         this.window = window;
     }
 
+    public JFrame getWindow() {return window;}
+
     public void init() {
         Container cp = window.getContentPane();
+        
 
         // panel for inputting form information
         JPanel westPanel = new JPanel();
@@ -191,44 +200,15 @@ public class Panel  {
         southPanel.setPreferredSize(new Dimension(400, 40));
 
         // panel for doctor's info and login
-        JPanel northPanel = new JPanel();
+        northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         cp.add(BorderLayout.NORTH, northPanel);
         northPanel.setPreferredSize(new Dimension(400, 44));
         northPanel.setBackground(Color.lightGray);
 
-        Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
+        
 
-        // login Text and border
-        JTextField login = new JTextField();
-        login.setEditable(true);
-        login.setBackground(Color.lightGray);
-        login.setForeground(Color.black);
-        login.setFont(new Font("Times New Roman", Font.BOLD, 15));
-        login.setPreferredSize(new Dimension(320, 38));
-
-        TitledBorder loginBorder;
-        loginBorder = BorderFactory.createTitledBorder(loweredbeveled, "Username/Email");
-        loginBorder.setTitleJustification(TitledBorder.LEFT);
-        login.setBorder(loginBorder);
-        northPanel.add(BorderLayout.WEST, login);
-
-        // password Text
-        JPasswordField password = new JPasswordField();
-        password.setEditable(true);
-        password.setBackground(Color.lightGray);
-        password.setForeground(Color.black);
-        password.setFont(new Font("Courier New", Font.BOLD, 15));
-        password.setPreferredSize(new Dimension(320, 38));
-
-        TitledBorder passBorder;
-        passBorder = BorderFactory.createTitledBorder(loweredbeveled, "Password");
-        passBorder.setTitleJustification(TitledBorder.LEFT);
-        password.setBorder(passBorder);
-        northPanel.add(BorderLayout.WEST, password);
-
-        //login button
-        northPanel.add(BorderLayout.EAST, loginButton);
+        createLoginPanel();
 
         //text area
         canvas = new Canvas(this);
@@ -256,6 +236,48 @@ public class Panel  {
         clearTextAreaButton.addActionListener(listener);
         loginButton.addActionListener(listener);
 
+    }
+
+    public JTextField getLogin(){
+        return this.login;
+    }
+    public JTextField getPassword(){
+        return this.password;
+    }
+
+    public void createLoginPanel(){
+
+        Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
+        // login Text and border
+        login = new JTextField();
+        login.setEditable(true);
+        login.setBackground(Color.lightGray);
+        login.setForeground(Color.black);
+        login.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        login.setPreferredSize(new Dimension(320, 38));
+
+        TitledBorder loginBorder;
+        loginBorder = BorderFactory.createTitledBorder(loweredbeveled, "Username/Email");
+        loginBorder.setTitleJustification(TitledBorder.LEFT);
+        login.setBorder(loginBorder);
+        this.northPanel.add(BorderLayout.WEST, login);
+
+        // password Text
+        password = new JPasswordField();
+        password.setEditable(true);
+        password.setBackground(Color.lightGray);
+        password.setForeground(Color.black);
+        password.setFont(new Font("Courier New", Font.BOLD, 15));
+        password.setPreferredSize(new Dimension(320, 38));
+
+        TitledBorder passBorder;
+        passBorder = BorderFactory.createTitledBorder(loweredbeveled, "Password");
+        passBorder.setTitleJustification(TitledBorder.LEFT);
+        password.setBorder(passBorder);
+        northPanel.add(BorderLayout.WEST, password);
+
+        //login button
+        northPanel.add(BorderLayout.EAST, loginButton);
     }
 
     public JTextArea getStuff(){
